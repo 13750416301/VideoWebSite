@@ -1,85 +1,47 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <!-- video element -->
+    <vue-plyr class="video">
+      <video poster="poster.png" src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4">
+        <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="720">
+        <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="1080">
+        <track kind="captions" label="English" srclang="en" src="captions-en.vtt" default>
+      </video>
+    </vue-plyr>
+
+    <!-- audio element -->
+    <!-- <vue-plyr>
+      <audio>
+        <source src="audio.mp3" type="audio/mp3" />
+        <source src="audio.ogg" type="audio/ogg" />
+      </audio>
+    </vue-plyr> -->
+
+    <!-- youtube iframe with progressive enhancement (extra queries after the url to optimize the embed) -->
+    <!-- <vue-plyr>
+      <div class="plyr__video-embed">
+        <iframe src="https://www.youtube.com/embed/bTqVqk7FSmY?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1" allowfullscreen allowtransparency allow="autoplay">
+        </iframe>
+      </div>
+    </vue-plyr> -->
+
+    <!-- youtube div element -->
+    <!-- <vue-plyr>
+      <div data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
+    </vue-plyr> -->
+
+    <!-- vimeo iframe with progressive enhancement (extra queries after the url to optimize the embed) -->
+    <!-- <vue-plyr>
+      <div class="plyr__video-embed">
+        <iframe src="https://player.vimeo.com/video/76979871?loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media" allowfullscreen allowtransparency allow="autoplay">
+        </iframe>
+      </div>
+    </vue-plyr> -->
+
+    <!-- vimeo div element -->
+    <!-- <vue-plyr>
+      <div data-plyr-provider="vimeo" data-plyr-embed-id="76979871"></div>
+    </vue-plyr> -->
   </div>
 </template>
 
@@ -96,18 +58,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.video {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
 }
 </style>
