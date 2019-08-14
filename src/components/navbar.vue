@@ -1,40 +1,22 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+  <div class="nav-bar">
+    <div class="content">
+      <ul>
+        <li><a href="#">
+            <Icon type="ios-home" size="25" style="margin-right:5px" />首页</a></li>
+        <li><a href="#">视频专区</a></li>
+        <li><a href="#">美图专区</a></li>
+        <li><a href="#">文章专区</a></li>
+      </ul>
+      <ul class="login-tab">
+        <li class="login-btn">
+          <a href="#">
+            <Icon type="ios-contact" size="30" style="margin-right:5px" />
+            登陆
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -56,7 +38,43 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.navbar {
+.nav-bar {
   width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 15px;
+  background-color: rgba(26, 175, 255, 1);
+}
+.content {
+  width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.content ul li {
+  text-align: center;
+  padding: 0 15px;
+  display: block;
+  width: 100px;
+  float: left;
+}
+
+.content ul li:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 0.3s;
+}
+
+.login-tab {
+  float: right;
+}
+
+.login-btn {
+  width: 150px;
+}
+
+.content ul li a {
+  display: block;
+  height: 100%;
+  color: #fff;
 }
 </style>

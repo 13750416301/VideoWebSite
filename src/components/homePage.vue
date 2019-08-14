@@ -35,6 +35,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.homePage {
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+}
 .video {
   width: 500px;
   height: 500px;
