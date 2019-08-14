@@ -1,6 +1,10 @@
 <template>
+  <!-- 首页 -->
   <div class="homePage">
     <Navbar></Navbar>
+    <div class="homeImage">
+
+    </div>
     <!-- video element -->
     <vue-plyr class="video">
       <video poster="poster.png" src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4">
@@ -19,7 +23,6 @@ export default {
   name: 'homePage',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   },
   components: {

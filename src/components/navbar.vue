@@ -1,12 +1,17 @@
 <template>
+  <!-- 导航栏 -->
   <div class="nav-bar">
     <div class="content">
       <ul>
+        <li><a class="title" href="#">GiriGiri</a></li>
         <li><a href="#">
             <Icon type="ios-home" size="25" style="margin-right:5px" />首页</a></li>
-        <li><a href="#">视频专区</a></li>
-        <li><a href="#">美图专区</a></li>
-        <li><a href="#">文章专区</a></li>
+        <li><a href="#">
+            <Icon type="logo-youtube" size="25" style="margin-right:5px" />视频专区</a></li>
+        <li><a href="#">
+            <Icon type="ios-images" size="25" style="margin-right:5px" />美图专区</a></li>
+        <li><a href="#">
+            <Icon type="ios-book-outline" size="25" style="margin-right:5px" />文章专区</a></li>
       </ul>
       <ul class="login-tab">
         <li class="login-btn">
@@ -25,7 +30,6 @@ export default {
   name: 'navbar',
   data () {
     return {
-      theme1: 'light'
     }
   },
   methods: {
@@ -38,6 +42,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.title {
+  font-family: "Audiowide";
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  transition: all 1.5s ease;
+}
 .nav-bar {
   width: 100%;
   height: 50px;
@@ -46,7 +57,7 @@ export default {
   background-color: rgba(26, 175, 255, 1);
 }
 .content {
-  width: 1280px;
+  width: 1080px;
   height: 100%;
   margin: 0 auto;
 }
@@ -55,12 +66,12 @@ export default {
   text-align: center;
   padding: 0 15px;
   display: block;
-  width: 100px;
+  width: 125px;
   float: left;
 }
 
 .content ul li:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   transition: 0.3s;
 }
 
