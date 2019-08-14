@@ -15,7 +15,7 @@
       </ul>
       <ul class="login-tab">
         <li class="login-btn">
-          <a href="#">
+          <a @click="goLogin">
             <Icon type="ios-contact" size="30" style="margin-right:5px" />
             登陆
           </a>
@@ -33,8 +33,8 @@ export default {
     }
   },
   methods: {
-    go () {
-      this.$router.push('/HelloWorld')
+    goLogin () {
+      this.$router.push('/login')
     }
   }
 }
