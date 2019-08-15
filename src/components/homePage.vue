@@ -17,15 +17,6 @@
         狂三天下第一
       </div>
     </div>
-    <!-- video element -->
-    <!-- <vue-plyr class="video">
-      <video poster="poster.png" src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4">
-        <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="720">
-        <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="1080">
-        <track kind="captions" label="English" srclang="en" src="captions-en.vtt" default>
-      </video>
-    </vue-plyr>
-    <Button @click="go">点我跳转</Button> -->
     <div class="videoArea">
       <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />视频专区
       <span>更多 >>></span>
@@ -35,42 +26,42 @@
             <img src="../assets/cluemi.jpg" />
             <VideoHover></VideoHover>
           </a>
-          狂三威风堂堂
+          <div class="v-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
             <VideoHover></VideoHover>
           </a>
-          狂三威风堂堂
+          <div class="v-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
             <VideoHover></VideoHover>
           </a>
-          狂三威风堂堂
+          <div class="v-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
             <VideoHover></VideoHover>
           </a>
-          狂三威风堂堂
+          <div class="v-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
             <VideoHover></VideoHover>
           </a>
-          狂三威风堂堂
+          <div class="v-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
             <VideoHover></VideoHover>
           </a>
-          狂三威风堂堂
+          <div class="v-title">狂三威风堂堂</div>
         </div>
       </div>
     </div>
@@ -82,37 +73,59 @@
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
           </a>
-          狂三威风堂堂
+          <div class="img-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
           </a>
-          狂三威风堂堂
+          <div class="img-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
           </a>
-          狂三威风堂堂
+          <div class="img-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
           </a>
-          狂三威风堂堂
+          <div class="img-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
           </a>
-          狂三威风堂堂
+          <div class="img-title">狂三威风堂堂</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
             <img src="../assets/cluemi.jpg" />
           </a>
-          狂三威风堂堂
+          <div class="img-title">狂三威风堂堂</div>
+        </div>
+      </div>
+    </div>
+    <div class="articleArea">
+      <Icon type="ios-book-outline" color="#1AAFFF" size="25" style="margin-right:5px" />文章专区
+      <span>更多 >>></span>
+      <div class="articleArea-content">
+        <div class="articleArea-brid">
+          <div class="author-img">
+            <img src="../assets/bobo.jpg" />
+          </div>
+          <div class="content">
+            <div class="author-name"><span>海盗波波</span>的文章</div>
+            <div class="article">
+              <div class="article-title">论社会主义核心价值观</div>
+              <div class="article-content">
+                <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
+                <img src="../assets/bobo.jpg">
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -134,15 +147,6 @@ export default {
     VideoHover
   },
   methods: {
-    go () {
-      this.$router.push('/HelloWorld')
-    },
-    enter () {
-      this.active = 'display: flex;'
-    },
-    leave () {
-      this.active = 'display: none;'
-    }
   }
 }
 </script>
@@ -183,7 +187,7 @@ export default {
   width: 380px;
   height: 380px;
   text-align: center;
-  color: rgba(26, 175, 255, 1);
+  color: #1aafff;
   font-size: 15px;
 }
 
@@ -235,6 +239,10 @@ export default {
   /* background-color: #1aafff; */
 }
 
+.videoArea-content .video-brid .v-title {
+  color: #000;
+}
+
 .videoArea-content .video-brid .video-img {
   width: 95%;
   height: 80%;
@@ -254,9 +262,75 @@ export default {
   height: 95%;
   margin: auto auto;
 }
-.video {
-  width: 500px;
+
+.articleArea {
+  margin: 10px auto;
+  width: 1080px;
   height: 500px;
-  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px 20px;
+}
+
+.articleArea span {
+  display: block;
+  float: right;
+  cursor: pointer;
+}
+
+.articleArea-content {
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #efefef;
+  display: flex;
+}
+
+.articleArea-brid {
+  width: 60%;
+  display: flex;
+  margin-top: 20px;
+  padding-right: 50px;
+}
+
+.author-img {
+  width: 120px;
+  margin-right: 20px;
+}
+
+.author-img img {
+  width: 100%;
+}
+
+.author-name {
+  display: flex;
+  line-height: 24px;
+}
+
+.author-name span {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.article {
+  /* border: 1px solid #efefef; */
+  background-color: #f9f9f9;
+  margin-right: 10px;
+  padding: 10px 10px;
+}
+
+.article-title {
+  font-size: 15px;
+  line-height: 30px;
+  color: #1aafff;
+}
+
+.article-content {
+  line-height: 24px;
+  display: flex;
+}
+
+.article-content img {
+  margin-left: 20px;
+  width: 100px;
 }
 </style>
