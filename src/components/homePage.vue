@@ -28,24 +28,91 @@
     <Button @click="go">点我跳转</Button> -->
     <div class="videoArea">
       <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />视频专区
-      <span>>>></span>
+      <span>更多 >>></span>
       <div class="videoArea-content">
         <div class="video-brid">
-          <a @mouseenter="fds" class="video-img">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+            <VideoHover></VideoHover>
+          </a>
+          狂三威风堂堂
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+            <VideoHover></VideoHover>
+          </a>
+          狂三威风堂堂
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+            <VideoHover></VideoHover>
+          </a>
+          狂三威风堂堂
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+            <VideoHover></VideoHover>
+          </a>
+          狂三威风堂堂
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+            <VideoHover></VideoHover>
+          </a>
+          狂三威风堂堂
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+            <VideoHover></VideoHover>
+          </a>
+          狂三威风堂堂
+        </div>
+      </div>
+    </div>
+    <div class="videoArea">
+      <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />美图专区
+      <span>更多 >>></span>
+      <div class="videoArea-content">
+        <div class="video-brid">
+          <a class="video-img">
             <img src="../assets/cluemi.jpg" />
           </a>
           狂三威风堂堂
         </div>
         <div class="video-brid">
           <a class="video-img">
-            <!-- <img src="../assets/cluemi.jpg" /> -->
-
+            <img src="../assets/cluemi.jpg" />
           </a>
+          狂三威风堂堂
         </div>
         <div class="video-brid">
           <a class="video-img">
-            <!-- <img src="../assets/cluemi.jpg" /> -->
+            <img src="../assets/cluemi.jpg" />
           </a>
+          狂三威风堂堂
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+          </a>
+          狂三威风堂堂
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+          </a>
+          狂三威风堂堂
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/cluemi.jpg" />
+          </a>
+          狂三威风堂堂
         </div>
       </div>
     </div>
@@ -54,18 +121,27 @@
 
 <script>
 import Navbar from '@/components/navbar'
+import VideoHover from '@/components/videoHover'
 export default {
   name: 'homePage',
   data () {
     return {
+      active: ''
     }
   },
   components: {
-    Navbar
+    Navbar,
+    VideoHover
   },
   methods: {
     go () {
       this.$router.push('/HelloWorld')
+    },
+    enter () {
+      this.active = 'display: flex;'
+    },
+    leave () {
+      this.active = 'display: none;'
     }
   }
 }
@@ -78,9 +154,9 @@ export default {
   padding: 0;
   left: 0;
   top: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgb(239, 239, 239);
+  /* height: 100%;
+  width: 100%; */
+  background-color: #efefef;
 }
 .homeImage {
   background-color: #fff;
@@ -94,7 +170,7 @@ export default {
   float: left;
   width: 690px;
   height: 390px;
-  border: 1px solid rgb(239, 239, 239);
+  border: 1px solid #efefef;
 }
 
 .homeImageLeft img {
@@ -117,11 +193,12 @@ export default {
   width: 360px;
   height: 170px;
   line-height: 170px;
-  border: 1px solid rgb(239, 239, 239);
+  border: 1px solid #efefef;
   text-align: center;
 }
 
 .homeImageRight img {
+  display: block;
   width: 95%;
   height: 95%;
 }
@@ -146,13 +223,13 @@ export default {
   width: 100%;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid rgb(239, 239, 239);
+  border-top: 1px solid #efefef;
   text-align: center;
 }
 
 .videoArea-content .video-brid {
   float: left;
-  width: 346px;
+  width: 320px;
   height: 200px;
   text-align: center;
   /* background-color: #1aafff; */
@@ -164,7 +241,12 @@ export default {
   display: flex;
   align-items: center;
   text-align: center;
-  border: 1px solid rgb(239, 239, 239);
+  border: 1px solid #efefef;
+  position: relative;
+}
+
+.video-img:hover .videoHover {
+  display: flex;
 }
 
 .videoArea-content .video-brid .video-img img {
