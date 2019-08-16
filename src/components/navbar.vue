@@ -6,7 +6,7 @@
         <li><a class="title" href="#">GiriGiri</a></li>
         <li><a href="#">
             <Icon type="ios-home" size="25" style="margin-right:5px" />首页</a></li>
-        <li><a href="#">
+        <li><a @click="goVideoPage">
             <Icon type="logo-youtube" size="25" style="margin-right:5px" />视频专区</a></li>
         <li><a href="#">
             <Icon type="ios-images" size="25" style="margin-right:5px" />美图专区</a></li>
@@ -35,6 +35,9 @@ export default {
   methods: {
     goLogin () {
       this.$router.push('/login')
+    },
+    goVideoPage () {
+      this.$router.push('/videoPage')
     }
   }
 }

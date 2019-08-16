@@ -213,12 +213,17 @@
         </div>
       </div>
     </div>
+    <!-- <a href="#" class="return-top" title="回到顶部">
+      <Icon type="ios-arrow-up" size="35" style="margin: 0 auto;" />
+    </a> -->
+    <ReturnTop></ReturnTop>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/navbar'
 import VideoHover from '@/components/videoHover'
+import ReturnTop from '@/components/returnTop'
 export default {
   name: 'homePage',
   data () {
@@ -227,7 +232,8 @@ export default {
   },
   components: {
     Navbar,
-    VideoHover
+    VideoHover,
+    ReturnTop
   },
   methods: {
   }
