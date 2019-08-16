@@ -18,8 +18,10 @@
       </div>
     </div>
     <div class="videoArea">
-      <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />视频专区
-      <span>更多 >>></span>
+      <div class="area-title">
+        <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />视频专区
+        <span>更多 >>></span>
+      </div>
       <div class="videoArea-content">
         <div class="video-brid">
           <a class="video-img">
@@ -66,8 +68,10 @@
       </div>
     </div>
     <div class="videoArea">
-      <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />美图专区
-      <span>更多 >>></span>
+      <div class="area-title">
+        <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />美图专区
+        <span>更多 >>></span>
+      </div>
       <div class="videoArea-content">
         <div class="video-brid">
           <a class="video-img">
@@ -108,24 +112,104 @@
       </div>
     </div>
     <div class="articleArea">
-      <Icon type="ios-book-outline" color="#1AAFFF" size="25" style="margin-right:5px" />文章专区
-      <span>更多 >>></span>
+      <div class="area-title" style="color:#1aafff; font-size:15px;">
+        <Icon type="ios-book-outline" color="#1AAFFF" size="25" style="margin-right:5px;" />文章专区
+        <span>更多 >>></span>
+      </div>
       <div class="articleArea-content">
-        <div class="articleArea-brid">
-          <div class="author-img">
-            <img src="../assets/bobo.jpg" />
-          </div>
-          <div class="content">
-            <div class="author-name"><span>海盗波波</span>的文章</div>
-            <div class="article">
-              <div class="article-title">论社会主义核心价值观</div>
-              <div class="article-content">
-                <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
-                <img src="../assets/bobo.jpg">
-
+        <div class="content-left">
+          <div class="articleArea-brid">
+            <div class="author-img">
+              <img src="../assets/bobo.jpg" />
+            </div>
+            <div class="content">
+              <div class="author-name"><span>海盗波波</span>的文章</div>
+              <div class="article">
+                <div class="article-title">论社会主义核心价值观</div>
+                <div class="article-content">
+                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
+                  <img src="../assets/bobo.jpg">
+                </div>
               </div>
             </div>
           </div>
+          <div class="articleArea-brid">
+            <div class="author-img">
+              <img src="../assets/bobo.jpg" />
+            </div>
+            <div class="content">
+              <div class="author-name"><span>海盗波波</span>的文章</div>
+              <div class="article">
+                <div class="article-title">论社会主义核心价值观</div>
+                <div class="article-content">
+                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
+                  <img src="../assets/bobo.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="articleArea-brid">
+            <div class="author-img">
+              <img src="../assets/bobo.jpg" />
+            </div>
+            <div class="content">
+              <div class="author-name"><span>海盗波波</span>的文章</div>
+              <div class="article">
+                <div class="article-title">论社会主义核心价值观</div>
+                <div class="article-content">
+                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
+                  <img src="../assets/bobo.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-right">
+          <h3>今日推荐</h3>
+          <ul>
+            <li>
+              <a class="introImg">
+                <img src="../assets/introduce/1.jpg" />
+                报名 | 亚马逊首席科学家李沐亲授「深度学习实训营
+              </a>
+            </li>
+            <li>
+              <a class="introImg">
+                <img src="../assets/introduce/1.jpg" />
+                报名 | 亚马逊首席科学家李沐亲授「深度学习实训营
+              </a>
+            </li>
+            <li>
+              <a class="introImg">
+                <img src="../assets/introduce/1.jpg" />
+                报名 | 亚马逊首席科学家李沐亲授「深度学习实训营
+              </a>
+            </li>
+            <li>
+              <a class="introImg">
+                <img src="../assets/introduce/1.jpg" />
+                报名 | 亚马逊首席科学家李沐亲授「深度学习实训营
+              </a>
+            </li>
+            <li>
+              <a class="introImg">
+                <img src="../assets/introduce/1.jpg" />
+                报名 | 亚马逊首席科学家李沐亲授「深度学习实训营
+              </a>
+            </li>
+            <li>
+              <a class="introImg">
+                <img src="../assets/introduce/1.jpg" />
+                报名 | 亚马逊首席科学家李沐亲授「深度学习实训营
+              </a>
+            </li>
+            <li>
+              <a class="introImg">
+                <img src="../assets/introduce/1.jpg" />
+                报名 | 亚马逊首席科学家李沐亲授「深度学习实训营
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -139,7 +223,6 @@ export default {
   name: 'homePage',
   data () {
     return {
-      active: ''
     }
   },
   components: {
@@ -214,6 +297,10 @@ export default {
   background-color: #fff;
   padding: 20px 20px;
   font-size: 15px;
+  /* color: #1aafff; */
+}
+
+.area-title {
   color: #1aafff;
 }
 
@@ -266,7 +353,7 @@ export default {
 .articleArea {
   margin: 10px auto;
   width: 1080px;
-  height: 500px;
+  /* height: 500px; */
   background-color: #fff;
   padding: 20px 20px;
 }
@@ -285,16 +372,21 @@ export default {
   display: flex;
 }
 
-.articleArea-brid {
+.content-left {
   width: 60%;
+}
+
+.articleArea-brid {
+  width: 100%;
   display: flex;
-  margin-top: 20px;
+  margin-top: 40px;
   padding-right: 50px;
 }
 
 .author-img {
   width: 120px;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .author-img img {
@@ -312,7 +404,6 @@ export default {
 }
 
 .article {
-  /* border: 1px solid #efefef; */
   background-color: #f9f9f9;
   margin-right: 10px;
   padding: 10px 10px;
@@ -322,6 +413,11 @@ export default {
   font-size: 15px;
   line-height: 30px;
   color: #1aafff;
+  cursor: pointer;
+}
+
+.article-title:hover {
+  text-decoration: underline;
 }
 
 .article-content {
@@ -332,5 +428,24 @@ export default {
 .article-content img {
   margin-left: 20px;
   width: 100px;
+}
+
+.content-right {
+  padding: 20px 20px;
+  border-left: 1px solid #efefef;
+}
+
+.content-right h3 {
+  border-left: 2px solid #1aafff;
+  padding-left: 10px;
+}
+
+.content-right ul li {
+  margin-top: 20px;
+}
+
+.content-right ul li img {
+  width: 85px;
+  margin-right: 10px;
 }
 </style>
