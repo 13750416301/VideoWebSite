@@ -84,8 +84,8 @@ export default {
 }
 .video-head {
   padding: 10px 0px;
-  width: 800px;
-  margin: 0 auto;
+  width: 400px;
+  /* margin: 0 auto; */
 }
 
 .videoTitle {
