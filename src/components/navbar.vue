@@ -3,10 +3,10 @@
   <div class="nav-bar">
     <div class="content">
       <ul>
-        <li><a class="title" href="#">GiriGiri</a></li>
-        <li><a href="#">
+        <li><a class="title" @click="goHomePage">GiriGiri</a></li>
+        <li><a @click="goHomePage">
             <Icon type="ios-home" size="25" style="margin-right:5px" />首页</a></li>
-        <li><a @click="goVideoPage">
+        <li><a @click="goVideoList">
             <Icon type="logo-youtube" size="25" style="margin-right:5px" />视频专区</a></li>
         <li><a href="#">
             <Icon type="ios-images" size="25" style="margin-right:5px" />美图专区</a></li>
@@ -33,11 +33,14 @@ export default {
     }
   },
   methods: {
+    goHomePage () {
+      this.$router.push('/')
+    },
     goLogin () {
       this.$router.push('/login')
     },
-    goVideoPage () {
-      this.$router.push('/videoPage')
+    goVideoList () {
+      this.$router.push('/VideoList')
     }
   }
 }

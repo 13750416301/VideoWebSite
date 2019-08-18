@@ -23,50 +23,65 @@
         <span>更多 >>></span>
       </div>
       <div class="videoArea-content">
-        <div class="video-brid">
+        <div class="video-brid" v-for="item in pageData" :key="item">
           <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
+            <img src="page" />
             <VideoHover></VideoHover>
           </a>
-          <div class="v-title">狂三威风堂堂</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">狂三威风堂堂</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">狂三威风堂堂</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">狂三威风堂堂</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">狂三威风堂堂</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">狂三威风堂堂</div>
+          <div class="v-title">{{ item.name }}</div>
         </div>
       </div>
     </div>
+    <!-- <div class="videoArea">
+      <div class="area-title">
+        <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />视频专区
+        <span>更多 >>></span>
+      </div>
+      <div class="videoArea-content">
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <VideoHover></VideoHover>
+          </a>
+          <div class="v-title">折纸大师</div>
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <VideoHover></VideoHover>
+          </a>
+          <div class="v-title">折纸大师</div>
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <VideoHover></VideoHover>
+          </a>
+          <div class="v-title">折纸大师</div>
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <VideoHover></VideoHover>
+          </a>
+          <div class="v-title">折纸大师</div>
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <VideoHover></VideoHover>
+          </a>
+          <div class="v-title">折纸大师</div>
+        </div>
+        <div class="video-brid">
+          <a class="video-img">
+            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <VideoHover></VideoHover>
+          </a>
+          <div class="v-title">折纸大师</div>
+        </div>
+      </div>
+    </div> -->
     <div class="videoArea">
       <div class="area-title">
         <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />美图专区
@@ -75,39 +90,39 @@
       <div class="videoArea-content">
         <div class="video-brid">
           <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
+            <img src="../assets/image/homePage/鸢一折纸.png" />
           </a>
-          <div class="img-title">狂三威风堂堂</div>
+          <div class="img-title">折纸大师</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
+            <img src="../assets/image/homePage/鸢一折纸.png" />
           </a>
-          <div class="img-title">狂三威风堂堂</div>
+          <div class="img-title">折纸大师</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
+            <img src="../assets/image/homePage/鸢一折纸.png" />
           </a>
-          <div class="img-title">狂三威风堂堂</div>
+          <div class="img-title">折纸大师</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
+            <img src="../assets/image/homePage/鸢一折纸.png" />
           </a>
-          <div class="img-title">狂三威风堂堂</div>
+          <div class="img-title">折纸大师</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
+            <img src="../assets/image/homePage/鸢一折纸.png" />
           </a>
-          <div class="img-title">狂三威风堂堂</div>
+          <div class="img-title">折纸大师</div>
         </div>
         <div class="video-brid">
           <a class="video-img">
-            <img src="../assets/cluemi.jpg" />
+            <img src="../assets/image/homePage/鸢一折纸.png" />
           </a>
-          <div class="img-title">狂三威风堂堂</div>
+          <div class="img-title">折纸大师</div>
         </div>
       </div>
     </div>
@@ -213,9 +228,6 @@
         </div>
       </div>
     </div>
-    <!-- <a href="#" class="return-top" title="回到顶部">
-      <Icon type="ios-arrow-up" size="35" style="margin: 0 auto;" />
-    </a> -->
     <ReturnTop></ReturnTop>
   </div>
 </template>
@@ -228,6 +240,7 @@ export default {
   name: 'homePage',
   data () {
     return {
+      pageData: []
     }
   },
   components: {
@@ -236,6 +249,9 @@ export default {
     ReturnTop
   },
   methods: {
+    loadData() {
+
+    }
   }
 }
 </script>
