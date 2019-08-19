@@ -21,6 +21,7 @@
     "popper.js": "^1.15.0",
     "save": "^2.4.0",
     "vue": "^2.5.2",
+    "vue-baberrage": "^2.1.9",
     "vue-plyr": "^5.1.3",
     "vue-router": "^3.0.1"
   },

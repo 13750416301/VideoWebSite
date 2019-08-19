@@ -17,6 +17,8 @@
         </div>
         <div class="video-content">
           <vue-plyr class="video">
+            <vue-baberrage class="baberrage" :isShow="barrageIsShow" :barrageList="barrageList" :loop="barrageLoop">
+            </vue-baberrage>
             <video poster="poster.png" src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4">
               <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="480">
               <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="720">
@@ -115,11 +117,20 @@
 <script>
 import Navbar from '@/components/navbar'
 import ReturnTop from '@/components/returnTop'
+import {MESSAGE_TYPE} from 'vue-baberrage'
 export default {
   name: 'homePage',
   data () {
     return {
-      active: ''
+      msg: 'Hello vue-baberrage',
+      barrageIsShow: true,
+      currentId: 0,
+      barrageLoop: true,
+      barrageList: [{ id: 1,
+        avatar: '../assets/bobo.jpg',
+        msg: '2333333',
+        time: 5,
+        type: MESSAGE_TYPE.NORMAL }, {msg: '233333333'}, {msg: '233333333'}, {msg: '233333333'}, {msg: '233333333'}, {msg: '233333333'}, {msg: '233333333'}, {msg: '233333333'}]
     }
   },
   components: {
@@ -127,8 +138,14 @@ export default {
     ReturnTop
   },
   methods: {
-    go () {
-      this.$router.push('/HelloWorld')
+    addToList () {
+      this.barrageList.push({
+        id: ++this.currentId,
+        avatar: '../assets/bobo.jpg',
+        msg: this.msg,
+        time: 5,
+        type: MESSAGE_TYPE.NORMAL
+      })
     }
   }
 }
@@ -136,6 +153,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.baberrage {
+  top: 0;
+  left: 0;
+}
 .videoPage {
   margin: 0;
   padding: 0;
@@ -203,6 +224,7 @@ export default {
   /* width: 660px; */
   width: 100%;
   padding: 0 30px;
+  position: relative;
   /* margin: 0 auto; */
 }
 
