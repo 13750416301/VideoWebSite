@@ -13,11 +13,13 @@ import 'vue-plyr/dist/vue-plyr.css' // only if your build system can import css,
 // import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'bootstrap/dist/js/bootstrap.min.js'
 import './assets/reset.css'
+import axios from 'axios'
 
 // Vue.use($)
 // Vue.use(bootstrap)
 Vue.use(VuePlyr)
 Vue.use(iView)
+Vue.use(axios)
 
 Vue.config.productionTip = false
 

@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="videoArea">
-      <div class="area-title">      
+      <div class="area-title">
         <Icon type="md-videocam" color="#1AAFFF" size="25" style="margin-right:5px" />生活专区
         <span>更多 >>></span>
       </div>
@@ -154,7 +154,7 @@
     </div>
     <ReturnTop></ReturnTop>
   </div>
-</template> 
+</template>
 
 <script>
 import Navbar from '@/components/navbar'
@@ -162,14 +162,14 @@ import VideoHover from '@/components/videoHover'
 import ReturnTop from '@/components/returnTop'
 import axios from 'axios'
 export default {
-  created() {
+  created () {
     this.loadData()
   },
   data () {
     return {
-      loadData() {
+      loadData () {
         return axios.get('http://119.23.46.237:8080/mServer/StudentInq').then(res => {
-          if(res.data.code === 'ok') {
+          if (res.data.code === 'ok') {
             console.log(res.data.items)
           }
         })
@@ -257,5 +257,4 @@ export default {
   height: 95%;
   margin: auto auto;
 }
-
 </style>

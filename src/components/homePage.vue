@@ -24,64 +24,14 @@
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in pageData" :key="item">
-          <a class="video-img">
-            <img src="page" />
+          <a class="video-img" @click="goVideoPage">
+            <img :src="item.imgSrc" />
             <VideoHover></VideoHover>
           </a>
           <div class="v-title">{{ item.name }}</div>
         </div>
       </div>
     </div>
-    <!-- <div class="videoArea">
-      <div class="area-title">
-        <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />视频专区
-        <span>更多 >>></span>
-      </div>
-      <div class="videoArea-content">
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-      </div>
-    </div> -->
     <div class="videoArea">
       <div class="area-title">
         <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />美图专区
@@ -236,11 +186,16 @@
 import Navbar from '@/components/navbar'
 import VideoHover from '@/components/videoHover'
 import ReturnTop from '@/components/returnTop'
+import axios from 'axios'
 export default {
   name: 'homePage',
+  created () {
+    this.loadData()
+  },
   data () {
     return {
-      pageData: []
+      pageData: [],
+      url: 'http://119.23.46.237:8080/videoWebSite/image/homePage/'
     }
   },
   components: {
@@ -249,8 +204,20 @@ export default {
     ReturnTop
   },
   methods: {
-    loadData() {
-
+    loadData () {
+      axios.get('http://119.23.46.237:8080/mServer/GetHomePage').then(res => {
+        if (res.data.code === 'ok') {
+          this.pageData = res.data.items
+          // this.pageData.name = this.url + this.pageData.name
+          this.pageData.forEach(item => {
+            item.imgSrc = this.url + item.imgSrc
+          })
+          console.log(this.pageData)
+        }
+      })
+    },
+    goVideoPage () {
+      this.$router.push('/VideoPage')
     }
   }
 }
@@ -319,7 +286,6 @@ export default {
   background-color: #fff;
   padding: 20px 20px;
   font-size: 15px;
-  /* color: #1aafff; */
 }
 
 .area-title {
