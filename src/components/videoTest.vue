@@ -140,7 +140,32 @@ export default {
       barrageIsShow: true,
       currentId: 0,
       barrageLoop: true,
-      barrageList: []
+      barrageList: [
+        {
+          avatar: 'http://119.23.46.237:8080/videoWebSite/image/homePage/bobo.jpg',
+          msg: '狂三我老婆',
+          time: 7,
+          type: MESSAGE_TYPE.NORMAL
+        },
+        {
+          avatar: 'http://119.23.46.237:8080/videoWebSite/image/homePage/bobo.jpg',
+          msg: '狂三我老婆',
+          time: 7,
+          type: MESSAGE_TYPE.NORMAL
+        },
+        {
+          avatar: 'http://119.23.46.237:8080/videoWebSite/image/homePage/bobo.jpg',
+          msg: '狂三我老婆',
+          time: 7,
+          type: MESSAGE_TYPE.NORMAL
+        },
+        {
+          avatar: 'http://119.23.46.237:8080/videoWebSite/image/homePage/bobo.jpg',
+          msg: '狂三我老婆',
+          time: 7,
+          type: MESSAGE_TYPE.NORMAL
+        }
+      ]
     }
   },
   components: {
@@ -151,7 +176,7 @@ export default {
     addToList () {
       this.barrageList.push({
         id: ++this.currentId,
-        avatar: '../assets/bobo.jpg',
+        avatar: 'http://119.23.46.237:8080/videoWebSite/image/homePage/bobo.jpg',
         msg: this.msg,
         time: 7,
         type: MESSAGE_TYPE.NORMAL

@@ -130,7 +130,7 @@ import Navbar from '@/components/navbar'
 import ReturnTop from '@/components/returnTop'
 import {MESSAGE_TYPE} from 'vue-baberrage'
 export default {
-  name: 'homePage',
+  name: 'videoPage',
   created () {
 
   },
@@ -151,7 +151,7 @@ export default {
     addToList () {
       this.barrageList.push({
         id: ++this.currentId,
-        avatar: '../assets/bobo.jpg',
+        avatar: 'http://119.23.46.237:8080/videoWebSite/image/homePage/dataALive.jpg',
         msg: this.msg,
         time: 7,
         type: MESSAGE_TYPE.NORMAL
