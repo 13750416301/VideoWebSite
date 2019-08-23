@@ -23,9 +23,9 @@
         <span>更多 >>></span>
       </div>
       <div class="videoArea-content">
-        <div class="video-brid" v-for="item in pageData" :key="item">
+        <div class="video-brid" v-for="item in pageData[0]" :key="item">
           <a class="video-img" @click="goVideoPage">
-            <img :src="item.imgSrc" />
+            <img :src="item.videoImg" />
             <VideoHover></VideoHover>
           </a>
           <div class="v-title">{{ item.name }}</div>
@@ -83,7 +83,22 @@
       </div>
       <div class="articleArea-content">
         <div class="content-left">
-          <div class="articleArea-brid">
+          <!-- <div class="articleArea-brid" v-for="item in pageData[2]" :key="item">
+            <div class="author-img">
+              <img :src="item." />
+            </div>
+            <div class="content">
+              <div class="author-name"><span>海盗波波</span>的文章</div>
+              <div class="article">
+                <div class="article-title">论社会主义核心价值观</div>
+                <div class="article-content">
+                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
+                  <img src="../assets/bobo.jpg">
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="articleArea-brid">
             <div class="author-img">
               <img src="../assets/bobo.jpg" />
             </div>
@@ -127,7 +142,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="content-right">
           <h3>今日推荐</h3>
@@ -195,7 +210,7 @@ export default {
   data () {
     return {
       pageData: [],
-      url: 'http://119.23.46.237:8080/videoWebSite/image/homePage/'
+      url: 'http://119.23.46.237:8080/videoWebSite/image/'
     }
   },
   components: {
@@ -205,12 +220,18 @@ export default {
   },
   methods: {
     loadData () {
-      axios.get('http://119.23.46.237:8080/mServer/GetHomePage').then(res => {
+      axios.get('http://119.23.46.237:8080/mServer/Get_HomePage').then(res => {
         if (res.data.code === 'ok') {
           this.pageData = res.data.items
           // this.pageData.name = this.url + this.pageData.name
-          this.pageData.forEach(item => {
-            item.imgSrc = this.url + item.imgSrc
+          this.pageData[0].forEach(item => {
+            item.videoImg = this.url + item.videoImg
+          })
+          this.pageData[1].forEach(item => {
+            item.src1 = this.url + item.src1
+          })
+          this.pageData[2].forEach(item => {
+            item.articleImg = this.url + item.articleImg
           })
           console.log(this.pageData)
         }

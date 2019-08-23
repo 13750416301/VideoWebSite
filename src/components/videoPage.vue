@@ -167,6 +167,7 @@ export default {
 .baberrage {
   top: 0;
   left: 0;
+  height: 80%;
 }
 .videoPage {
   margin: 0;

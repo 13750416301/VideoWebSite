@@ -193,6 +193,9 @@ export default {
   top: 0;
   left: 0;
 }
+.baberrage-stage {
+  height: 75% !important;
+}
 .videoPage {
   margin: 0;
   padding: 0;
