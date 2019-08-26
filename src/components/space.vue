@@ -33,9 +33,9 @@
               <div class="upload-title">
                 <Icon type="ios-cloud-upload-outline" />上传视频
               </div>
-              <Upload class="upload-button" action="//jsonplaceholder.typicode.com/posts/">
-                  <Icon type="md-add" size="100" color="#1aafff" />
-              </Upload>
+              <div class="upload-button" @click="videoDialog = true">
+                  <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+              </div>
             </div>
           </div>
         </TabPane>
@@ -59,9 +59,9 @@
               <div class="upload-title">
                 <Icon type="ios-cloud-upload-outline" />上传图片
               </div>
-              <Upload class="upload-button" action="//jsonplaceholder.typicode.com/posts/">
-                  <Icon type="md-add" size="100" color="#1aafff" />
-              </Upload>
+              <div class="upload-button" @click="imageDialog = true">
+                  <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+              </div>
             </div>
           </div>
           
@@ -94,15 +94,106 @@
               <div class="upload-title">
                 <Icon type="ios-cloud-upload-outline" />上传文章
               </div>
-              <Upload class="upload-button" action="//jsonplaceholder.typicode.com/posts/">
-                  <Icon type="md-add" size="100" color="#1aafff" />
-              </Upload>
+              <div class="upload-button" @click="articleDialog = true">
+                  <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+              </div>
             </div>
           </div>
           
         </TabPane>
       </Tabs>
     </div>
+    <Modal title="上传视频" v-model="videoDialog" width="600">
+      <Form :label-width="80">
+        <Row>
+          <i-col span="12">
+            <FormItem label="视频标题：">
+              <Input placeholder="请输入标题" />
+            </FormItem>
+          </i-col>
+          <i-col span="12">
+            <FormItem label="视频分类：">
+              <Select style="width:120px;">
+                <Option value="动漫">动漫</Option>
+                <Option value="游戏">游戏</Option>
+                <Option value="生活">生活</Option>
+              </Select>
+            </FormItem>
+          </i-col>
+        </Row>
+        <Row>
+          <upload class="upload-video" action="fjdsfjls">
+            <div class="upload-title" style="font-size:12px;">
+              <Icon type="ios-cloud-upload-outline" />上传视频
+            </div>
+            <div class="upload-button">
+                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+            </div>
+          </upload>
+        </Row>
+      </Form>
+    </Modal>
+    <Modal title="上传图片" v-model="imageDialog" width="600">
+      <Form :label-width="80">
+        <Row>
+          <i-col span="12">
+            <FormItem label="图片标题：">
+              <Input placeholder="请输入标题" />
+            </FormItem>
+          </i-col>
+          <i-col span="12">
+            <FormItem label="图片分类：">
+              <Select style="width:120px;">
+                <Option value="动漫">动漫</Option>
+                <Option value="游戏">游戏</Option>
+                <Option value="生活">生活</Option>
+              </Select>
+            </FormItem>
+          </i-col>
+        </Row>
+        <Row>
+          <FormItem label="图片描述：">
+            <Input type="textarea" :rows="3" />
+          </FormItem>
+        </Row>
+        <Row>
+          <upload class="upload-video" action="fjdsfjls">
+            <div class="upload-title" style="font-size:12px;">
+              <Icon type="ios-cloud-upload-outline" />上传图片
+            </div>
+            <div class="upload-button">
+                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+            </div>
+          </upload>
+        </Row>
+      </Form>
+    </Modal>
+    <Modal title="上传文章" v-model="articleDialog" width="600">
+      <Form :label-width="80">
+        <Row>
+          <i-col span="12">
+            <FormItem label="文章标题：">
+              <Input placeholder="请输入标题" />
+            </FormItem>
+          </i-col>
+        </Row>
+        <Row>
+          <FormItem label="文章内容：">
+            <Input type="textarea" :rows="10" />
+          </FormItem>
+        </Row>
+        <Row>
+          <upload class="upload-video" action="fjdsfjls">
+            <div class="upload-title" style="font-size:12px;">
+              <Icon type="ios-cloud-upload-outline" />上传文章图片
+            </div>
+            <div class="upload-button">
+                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+            </div>
+          </upload>
+        </Row>
+      </Form>
+    </Modal>
     <ReturnTop></ReturnTop>
   </div>
 </template>
@@ -119,6 +210,9 @@ export default {
   },
   data () {
     return {
+      videoDialog: false,
+      imageDialog: false,
+      articleDialog: false,
       videoData: [],
       imageData: [],
       articleData: [],
@@ -341,18 +435,18 @@ export default {
 
 .upload-title {
   font-size: 15px;
-  color: #1aafff;
+  color: #000;
   margin-bottom: 10px;
 }
 
 .upload-button {
   cursor: pointer;
-  width: 104px;
-  height: 104px;
+  width: 84px;
+  height: 84px;
   text-align: center;
   display: flex;
   align-items: center;
-  border: 2px solid #1aafff;
+  border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 }
 

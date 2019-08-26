@@ -104,8 +104,6 @@ export default {
   padding: 0;
   left: 0;
   top: 0;
-  /* height: 100%;
-  width: 100%; */
   background-color: #efefef;
 }
 
@@ -116,7 +114,6 @@ export default {
   background-color: #fff;
   padding: 20px 20px;
   font-size: 15px;
-  /* color: #1aafff; */
 }
 
 .area-title {
