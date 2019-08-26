@@ -13,7 +13,7 @@
             <div class="author-name">海盗波波</div>
             <div class="author-img"><img src="../assets/bobo.jpg" /></div>
           </div>
-          <a class="image-right">
+          <a class="image-right" @click="goImagePage">
             <div class="img-title">折纸大师</div>
             <div class="img-text">
               <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
@@ -209,6 +209,9 @@ export default {
     ReturnTop
   },
   methods: {
+    goImagePage() {
+      this.$router.push('/ImagePage')
+    },
     loadData () {
       axios.get('http://119.23.46.237:8080/mServer/GetHomePage').then(res => {
         if (res.data.code === 'ok') {

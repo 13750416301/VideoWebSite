@@ -10,7 +10,7 @@
             <Icon type="logo-youtube" size="25" style="margin-right:5px" />视频专区</a></li>
         <li><a @click="goImageList">
             <Icon type="ios-images" size="25" style="margin-right:5px" />美图专区</a></li>
-        <li><a href="#">
+        <li><a @click="goArticleList">
             <Icon type="ios-book-outline" size="25" style="margin-right:5px" />文章专区</a></li>
       </ul>
       <ul class="login-tab">
@@ -44,6 +44,9 @@ export default {
     },
     goImageList () {
       this.$router.push('/ImageList')
+    },
+    goArticleList() {
+      this.$router.push('/ArticleList')
     }
   }
 }

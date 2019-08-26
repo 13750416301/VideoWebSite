@@ -23,9 +23,9 @@
         <span>更多 >>></span>
       </div>
       <div class="videoArea-content">
-        <div class="video-brid" v-for="item in pageData[0]" :key="item">
+        <div class="video-brid" v-for="item in videoData" :key="item">
           <a class="video-img" @click="goVideoPage">
-            <img :src="item.videoImg" />
+            <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
           <div class="v-title">{{ item.name }}</div>
@@ -38,41 +38,11 @@
         <span>更多 >>></span>
       </div>
       <div class="videoArea-content">
-        <div class="video-brid">
+        <div class="video-brid" v-for="item in imageData" :key="item">
           <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <img :src="item.src1" />
           </a>
-          <div class="img-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-          </a>
-          <div class="img-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-          </a>
-          <div class="img-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-          </a>
-          <div class="img-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-          </a>
-          <div class="img-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-          </a>
-          <div class="img-title">折纸大师</div>
+          <div class="img-title">{{ item.title }}</div>
         </div>
       </div>
     </div>
@@ -83,66 +53,21 @@
       </div>
       <div class="articleArea-content">
         <div class="content-left">
-          <!-- <div class="articleArea-brid" v-for="item in pageData[2]" :key="item">
+          <div class="articleArea-brid" v-for="item in articleData" :key="item">
             <div class="author-img">
-              <img :src="item." />
+              <img :src="item.authorImg" />
             </div>
             <div class="content">
-              <div class="author-name"><span>海盗波波</span>的文章</div>
+              <div class="author-name"><span>{{item.authorName}}</span>的文章</div>
               <div class="article">
-                <div class="article-title">论社会主义核心价值观</div>
+                <div class="article-title">{{item.title}}</div>
                 <div class="article-content">
-                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
-                  <img src="../assets/bobo.jpg">
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="articleArea-brid">
-            <div class="author-img">
-              <img src="../assets/bobo.jpg" />
-            </div>
-            <div class="content">
-              <div class="author-name"><span>海盗波波</span>的文章</div>
-              <div class="article">
-                <div class="article-title">论社会主义核心价值观</div>
-                <div class="article-content">
-                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
-                  <img src="../assets/bobo.jpg">
+                  <p>{{item.content}}</p>
+                  <img :src="item.img">
                 </div>
               </div>
             </div>
           </div>
-          <div class="articleArea-brid">
-            <div class="author-img">
-              <img src="../assets/bobo.jpg" />
-            </div>
-            <div class="content">
-              <div class="author-name"><span>海盗波波</span>的文章</div>
-              <div class="article">
-                <div class="article-title">论社会主义核心价值观</div>
-                <div class="article-content">
-                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
-                  <img src="../assets/bobo.jpg">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="articleArea-brid">
-            <div class="author-img">
-              <img src="../assets/bobo.jpg" />
-            </div>
-            <div class="content">
-              <div class="author-name"><span>海盗波波</span>的文章</div>
-              <div class="article">
-                <div class="article-title">论社会主义核心价值观</div>
-                <div class="article-content">
-                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
-                  <img src="../assets/bobo.jpg">
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
         <div class="content-right">
           <h3>今日推荐</h3>
@@ -209,8 +134,10 @@ export default {
   },
   data () {
     return {
-      pageData: [],
-      url: 'http://119.23.46.237:8080/videoWebSite/image/'
+      videoData: [],
+      imageData: [],
+      articleData: [],
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/'
     }
   },
   components: {
@@ -220,25 +147,29 @@ export default {
   },
   methods: {
     loadData () {
-      axios.get('http://119.23.46.237:8080/mServer/Get_HomePage').then(res => {
-        if (res.data.code === 'ok') {
-          this.pageData = res.data.items
-          // this.pageData.name = this.url + this.pageData.name
-          this.pageData[0].forEach(item => {
-            item.videoImg = this.url + item.videoImg
+      axios.get('http://119.23.46.237:3000/getHomePage').then(res => {
+        if (res.data.code === 0) {
+          console.log(res.data.data)
+          this.videoData = res.data.data.video
+          this.imageData = res.data.data.images
+          this.articleData = res.data.data.article
+          this.videoData.forEach(item => {
+            item.img = this.imgUrl + item.img
+            item.authorImg = this.imgUrl + item.authorImg
           })
-          this.pageData[1].forEach(item => {
-            item.src1 = this.url + item.src1
+          this.imageData.forEach(item => {
+            item.src1 = this.imgUrl + item.src1
+            item.authorImg = this.imgUrl + item.authorImg
           })
-          this.pageData[2].forEach(item => {
-            item.articleImg = this.url + item.articleImg
+          this.articleData.forEach(item => {
+            item.img = this.imgUrl + item.img
+            item.authorImg = this.imgUrl + item.authorImg
           })
-          console.log(this.pageData)
         }
       })
     },
     goVideoPage () {
-      this.$router.push('/VideoPage')
+      this.$router.push({ path: '/VideoPage', query: { id: 1 }})
     }
   }
 }

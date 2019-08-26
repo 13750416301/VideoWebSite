@@ -8,44 +8,9 @@
         <span>更多 >>></span>
       </div>
       <div class="videoArea-content">
-        <div class="video-brid">
+        <div class="video-brid" v-for="item in animeData" :key="item">
           <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
           <div class="v-title">折纸大师</div>
@@ -58,44 +23,9 @@
         <span>更多 >>></span>
       </div>
       <div class="videoArea-content">
-        <div class="video-brid">
+        <div class="video-brid" v-for="item in gameData" :key="item">
           <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
           <div class="v-title">折纸大师</div>
@@ -108,44 +38,9 @@
         <span>更多 >>></span>
       </div>
       <div class="videoArea-content">
-        <div class="video-brid">
+        <div class="video-brid" v-for="item in lifeData" :key="item">
           <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
-            <VideoHover></VideoHover>
-          </a>
-          <div class="v-title">折纸大师</div>
-        </div>
-        <div class="video-brid">
-          <a class="video-img">
-            <img src="../assets/image/homePage/鸢一折纸.png" />
+            <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
           <div class="v-title">折纸大师</div>
@@ -167,13 +62,10 @@ export default {
   },
   data () {
     return {
-      loadData () {
-        return axios.get('http://119.23.46.237:8080/mServer/StudentInq').then(res => {
-          if (res.data.code === 'ok') {
-            console.log(res.data.items)
-          }
-        })
-      }
+      animeData: [],
+      gameData: [],
+      lifeData: [],
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
     }
   },
   components: {
@@ -182,6 +74,25 @@ export default {
     ReturnTop
   },
   methods: {
+    loadData () {
+      return axios.get('http://119.23.46.237:3000/getVideoList').then(res => {
+        if (res.data.code === 0) {
+          console.log(res.data.data)
+          this.animeData = res.data.data.anime
+          this.gameData = res.data.data.game
+          this.lifeData = res.data.data.life
+          this.animeData.forEach(item => {
+            item.img = this.imgUrl + item.img
+          })
+          this.gameData.forEach(item => {
+            item.img = this.imgUrl + item.img
+          })
+          this.lifeData.forEach(item => {
+            item.img = this.imgUrl + item.img
+          })
+        }
+      })
+    }
   }
 }
 </script>
