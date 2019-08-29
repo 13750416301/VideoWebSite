@@ -20,7 +20,7 @@
     <div class="videoArea">
       <div class="area-title">
         <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />视频专区
-        <span>更多 >>></span>
+        <span @click="goVideoList">更多 >>></span>
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in videoData" :key="item">
@@ -35,7 +35,7 @@
     <div class="videoArea">
       <div class="area-title">
         <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />美图专区
-        <span>更多 >>></span>
+        <span @click="goImageList">更多 >>></span>
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in imageData" :key="item">
@@ -49,7 +49,7 @@
     <div class="articleArea">
       <div class="area-title" style="color:#1aafff; font-size:15px;">
         <Icon type="ios-book-outline" color="#1AAFFF" size="25" style="margin-right:5px;" />文章专区
-        <span>更多 >>></span>
+        <span @click="goArticleList">更多 >>></span>
       </div>
       <div class="articleArea-content">
         <div class="content-left">
@@ -63,7 +63,9 @@
                 <div class="article-title">{{item.title}}</div>
                 <div class="article-content">
                   <p>{{item.content}}</p>
-                  <img :src="item.img">
+                  <div class="article-img">
+                    <img :src="item.img">
+                  </div>
                 </div>
               </div>
             </div>
@@ -164,12 +166,22 @@ export default {
           this.articleData.forEach(item => {
             item.img = this.imgUrl + item.img
             item.authorImg = this.imgUrl + item.authorImg
+            item.content = item.content.slice(0, 150) + '...'
           })
         }
       })
     },
     goVideoPage () {
-      this.$router.push({ path: '/VideoPage', query: { id: 1 }})
+      this.$router.push({path: '/VideoPage', query: {id: 1}})
+    },
+    goVideoList () {
+      this.$router.push('/VideoList')
+    },
+    goImageList () {
+      this.$router.push('/ImageList')
+    },
+    goArticleList () {
+      this.$router.push('/ArticleList')
     }
   }
 }
@@ -312,8 +324,8 @@ export default {
   display: flex;
 }
 
-.content-left {
-  width: 60%;
+.articleArea-content .content-left {
+  width: 65%;
 }
 
 .articleArea-brid {
@@ -323,24 +335,28 @@ export default {
   padding-right: 50px;
 }
 
-.author-img {
-  width: 120px;
+.articleArea-brid .author-img {
+  width: 10%;
   margin-right: 20px;
   cursor: pointer;
 }
 
-.author-img img {
+.articleArea-brid .author-img > img {
   width: 100%;
 }
 
-.author-name {
+.articleArea-brid .author-name {
   display: flex;
   line-height: 24px;
 }
 
-.author-name span {
+.articleArea-brid .author-name span {
   font-weight: bold;
   margin-right: 5px;
+}
+
+.articleArea-brid .content {
+  width: 90%;
 }
 
 .article {
@@ -365,12 +381,22 @@ export default {
   display: flex;
 }
 
-.article-content img {
+.article-content p {
+  width: 80%;
+}
+
+.article-content .article-img {
   margin-left: 20px;
-  width: 100px;
+  /* width: 100px; */
+  width: 20%;
+}
+
+.article-content .article-img img {
+  width: 100%;
 }
 
 .content-right {
+  width: 35%;
   padding: 20px 20px;
   border-left: 1px solid #efefef;
 }
@@ -384,7 +410,12 @@ export default {
   margin-top: 20px;
 }
 
-.content-right ul li img {
+.content-right ul li a {
+  display: flex;
+  align-items: center;
+}
+
+.content-right ul li a img {
   width: 85px;
   margin-right: 10px;
 }
