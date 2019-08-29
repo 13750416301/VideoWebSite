@@ -5,51 +5,22 @@
     <div class="articleArea">
       <div class="area-title" style="color:#1aafff; font-size:15px;">
         <Icon type="ios-book-outline" color="#1AAFFF" size="25" style="margin-right:5px;" />文章专区
-        <span>更多 >>></span>
       </div>
       <div class="articleArea-content">
         <div class="content-left">
-          <div class="articleArea-brid">
+          <div class="articleArea-brid" v-for="item in data" :key="item.id">
             <div class="author-img">
-              <img src="../assets/bobo.jpg" />
+              <img :src="item.authorImg" />
             </div>
             <div class="content">
-              <div class="author-name"><span>海盗波波</span>的文章</div>
+              <div class="author-name"><span>{{item.authorName}}</span>的文章</div>
               <div class="article">
-                <div class="article-title">论社会主义核心价值观</div>
+                <div class="article-title">{{item.title}}</div>
                 <div class="article-content">
-                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
-                  <img src="../assets/bobo.jpg">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="articleArea-brid">
-            <div class="author-img">
-              <img src="../assets/bobo.jpg" />
-            </div>
-            <div class="content">
-              <div class="author-name"><span>海盗波波</span>的文章</div>
-              <div class="article">
-                <div class="article-title">论社会主义核心价值观</div>
-                <div class="article-content">
-                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
-                  <img src="../assets/bobo.jpg">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="articleArea-brid">
-            <div class="author-img">
-              <img src="../assets/bobo.jpg" />
-            </div>
-            <div class="content">
-              <div class="author-name"><span>海盗波波</span>的文章</div>
-              <div class="article">
-                <div class="article-title">论社会主义核心价值观</div>
-                <div class="article-content">
-                  <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达...</p>
-                  <img src="../assets/bobo.jpg">
+                  <p>{{item.content}}</p>
+                  <div class="article-img">
+                    <img :src="item.img">
+                  </div>
                 </div>
               </div>
             </div>
@@ -120,8 +91,8 @@ export default {
   },
   data () {
     return {
-      pageData: [],
-      url: 'http://119.23.46.237:8080/videoWebSite/image/homePage/'
+      data: [],
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/'
     }
   },
   components: {
@@ -131,14 +102,14 @@ export default {
   },
   methods: {
     loadData () {
-      axios.get('http://119.23.46.237:8080/mServer/GetHomePage').then(res => {
-        if (res.data.code === 'ok') {
-          this.pageData = res.data.items
-          // this.pageData.name = this.url + this.pageData.name
-          this.pageData.forEach(item => {
-            item.imgSrc = this.url + item.imgSrc
+      axios.get('http://119.23.46.237:3000/getArticleList').then(res => {
+        if (res.data.code === 0) {
+          this.data = res.data.data.article
+          this.data.forEach(item => {
+            item.img = this.imgUrl + item.img
+            item.authorImg = this.imgUrl + item.authorImg
+            item.content = item.content.slice(0, 150) + '...'
           })
-          console.log(this.pageData)
         }
       })
     },
@@ -286,8 +257,8 @@ export default {
   display: flex;
 }
 
-.content-left {
-  width: 60%;
+.articleArea-content .content-left {
+  width: 65%;
 }
 
 .articleArea-brid {
@@ -297,24 +268,28 @@ export default {
   padding-right: 50px;
 }
 
-.author-img {
-  width: 120px;
+.articleArea-brid .author-img {
+  width: 10%;
   margin-right: 20px;
   cursor: pointer;
 }
 
-.author-img img {
+.articleArea-brid .author-img > img {
   width: 100%;
 }
 
-.author-name {
+.articleArea-brid .author-name {
   display: flex;
   line-height: 24px;
 }
 
-.author-name span {
+.articleArea-brid .author-name span {
   font-weight: bold;
   margin-right: 5px;
+}
+
+.articleArea-brid .content {
+  width: 90%;
 }
 
 .article {
@@ -339,12 +314,22 @@ export default {
   display: flex;
 }
 
-.article-content img {
+.article-content p {
+  width: 80%;
+}
+
+.article-content .article-img {
   margin-left: 20px;
-  width: 100px;
+  /* width: 100px; */
+  width: 20%;
+}
+
+.article-content .article-img img {
+  width: 100%;
 }
 
 .content-right {
+  width: 35%;
   padding: 20px 20px;
   border-left: 1px solid #efefef;
 }
@@ -358,7 +343,12 @@ export default {
   margin-top: 20px;
 }
 
-.content-right ul li img {
+.content-right ul li a {
+  display: flex;
+  align-items: center;
+}
+
+.content-right ul li a img {
   width: 85px;
   margin-right: 10px;
 }

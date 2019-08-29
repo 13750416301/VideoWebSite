@@ -7,15 +7,15 @@
       <div class="videoArea">
         <div class="video-head">
           <div class="head-left">
-            <div class="videoTitle">狂三威风堂堂</div>
-            <div class="videoType">视频 >> 分类 >> AMV</div>
+            <div class="videoTitle">{{data.title}}</div>
+            <div class="videoType">分类：{{data.category}}</div>
           </div>
           <div class="author">
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-            <div class="author-name">海盗波波</div>
+            <div class="author-img"><img :src="data.authorImg" /></div>
+            <div class="author-name">{{data.authorName}}</div>
           </div>
         </div>
-        <div class="video-content">
+        <!-- <div class="video-content">
           <vue-plyr class="video">
             <video poster="poster.png" src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4">
               <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="480">
@@ -26,21 +26,23 @@
             <vue-baberrage class="baberrage" :isShow="barrageIsShow" :barrageList="barrageList" :loop="barrageLoop">
             </vue-baberrage>
           </vue-plyr>
+        </div> -->
+        <div class="video-content">
+          <vue-plyr class="video">
+            <video poster="poster.png" :src="data.src1">
+              <!-- <source :src="data.src3" type="video/mp4" size="480"> -->
+              <source :src="data.src2" type="video/mp4" size="720">
+              <source :src="data.src1" type="video/mp4" size="1080">
+              <track kind="captions" label="English" srclang="en" src="captions-en.vtt" default>
+            </video>
+            <vue-baberrage class="baberrage" :isShow="barrageIsShow" :barrageList="barrageList" :loop="barrageLoop">
+            </vue-baberrage>
+          </vue-plyr>
         </div>
 
         <div class="video-bullet">
           <Input search enter-button placeholder="请输入弹幕..." v-model="msg" @on-search="addToList" />
         </div>
-        <!-- <div class="box">
-          <div class="barrage-container-wrap clearfix" ref="barrageContainerWrap">
-            <div class="barrage-container" ref="barrageContainer">
-            </div>
-          </div>
-          <div class="send-wrap">
-            <input type="text" class="input" placeholder="弹幕发送">
-            <span class="send-btn">发送</span>
-          </div>
-        </div> -->
       </div>
       <div class="content-right">
         <div class="right-title">猜你喜欢</div>
@@ -129,18 +131,24 @@
 import Navbar from '@/components/navbar'
 import ReturnTop from '@/components/returnTop'
 import {MESSAGE_TYPE} from 'vue-baberrage'
+import axios from 'axios';
 export default {
   name: 'videoPage',
   created () {
-
+    this.id = this.$route.query.id
+    this.loadData()
   },
   data () {
     return {
-      msg: 'Hello vue-baberrage',
+      msg: '请输入弹幕！',
       barrageIsShow: true,
       currentId: 0,
       barrageLoop: true,
-      barrageList: []
+      barrageList: [],
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
+      videoUrl: 'http://119.23.46.237:8080/videoWebSite/video/',
+      id: null,
+      data: {},
     }
   },
   components: {
@@ -151,12 +159,31 @@ export default {
     addToList () {
       this.barrageList.push({
         id: ++this.currentId,
-        avatar: 'http://119.23.46.237:8080/videoWebSite/image/homePage/dataALive.jpg',
+        // avatar: 'http://119.23.46.237:8080/videoWebSite/image/微信图片_20190826172039.jpg',
+        avatar: item.authorImg,
         msg: this.msg,
         time: 7,
         type: MESSAGE_TYPE.NORMAL
       })
-      console.log('click')
+    },
+    loadData() {
+      axios.get('http://119.23.46.237:3000/getVideoById?id=' + this.id).then(res => {
+        if(res.data.code === 0) {
+          this.data = res.data.data
+          // this.data.forEach(item => {
+          //   item.authorImg = this.imgUrl + item.authorImg
+          //   item.img = this.imgUrl + item.img
+          //   item.src1 = this.videoUrl + item.src1
+          //   item.src2 = this.videoUrl + item.src2
+          //   item.src3 = this.videoUrl + item.src3
+          // });
+          this.data.authorImg = this.imgUrl + this.data.authorImg
+          this.data.img = this.imgUrl + this.data.img
+          this.data.src1 = this.videoUrl + this.data.src1
+          this.data.src2 = this.videoUrl + this.data.src2
+          this.data.src3 = this.videoUrl + this.data.src3
+        }
+      })
     }
   }
 }
@@ -185,7 +212,7 @@ export default {
   display: flex;
 }
 .videoArea {
-  width: 770px;
+  width: 820px;
   margin-right: 10px;
   background-color: #fff;
 }
@@ -263,7 +290,7 @@ export default {
 
 .content-right {
   background-color: #fff;
-  width: 300px;
+  width: 250px;
   /* height: 800px; */
   padding: 20px 10px;
 }

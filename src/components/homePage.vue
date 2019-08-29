@@ -24,11 +24,11 @@
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in videoData" :key="item">
-          <a class="video-img" @click="goVideoPage">
+          <a class="video-img" @click="goVideoPage(item.id)">
             <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
-          <div class="v-title">{{ item.name }}</div>
+          <div class="v-title">{{ item.title }}</div>
         </div>
       </div>
     </div>
@@ -171,8 +171,8 @@ export default {
         }
       })
     },
-    goVideoPage () {
-      this.$router.push({path: '/VideoPage', query: {id: 1}})
+    goVideoPage (id) {
+      this.$router.push({path: '/VideoPage', query: {id: id}})
     },
     goVideoList () {
       this.$router.push('/VideoList')
