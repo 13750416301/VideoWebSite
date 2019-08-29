@@ -5,59 +5,36 @@
     <div class="imageArea">
       <div class="area-title">
         <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />动漫专区
-        <span>更多 >>></span>
+        <span @click="goImageListByArea('动漫')">更多 >>></span>
       </div>
       <div class="imageArea-content">
-        <div class="image-brid">
+        <div class="image-brid" v-for="item in animeData" :key="item">
           <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
+            <div class="author-name">{{item.authorName}}</div>
+            <div class="author-img"><img :src="item.authorImg" /></div>
           </div>
           <a class="image-right" @click="goImagePage">
-            <div class="img-title">折纸大师</div>
+            <div class="img-title">{{item.title}}</div>
             <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
+              <p>{{item.text}}</p>
             </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src1 != imgUrl" class="image-img">
+              <img :src="item.src1" />
             </a>
-          </a>
-
-        </div>
-        <div class="image-brid">
-          <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-          </div>
-          <a class="image-right">
-            <div class="img-title">折纸大师</div>
-            <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
-            </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src2 != imgUrl" class="image-img">
+              <img :src="item.src2" />
             </a>
-          </a>
-
-        </div>
-        <div class="image-brid">
-          <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-          </div>
-          <a class="image-right">
-            <div class="img-title">折纸大师</div>
-            <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
-            </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src3 != imgUrl" class="image-img">
+              <img :src="item.src3" />
             </a>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src4 != imgUrl" class="image-img">
+              <img :src="item.src4" />
+            </a>
+            <a v-if="item.src5 != imgUrl" class="image-img">
+              <img :src="item.src5" />
+            </a>
+            <a v-if="item.src6 != imgUrl" class="image-img">
+              <img :src="item.src6" />
             </a>
           </a>
         </div>
@@ -65,60 +42,37 @@
     </div>
     <div class="imageArea">
       <div class="area-title">
-        <Icon type="ios-game-controller-b-outline" color="#1AAFFF" size="25" style="margin-right:5px" />游戏专区
-        <span>更多 >>></span>
+        <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />游戏专区
+        <span @click="goImageListByArea('游戏')">更多 >>></span>
       </div>
       <div class="imageArea-content">
-        <div class="image-brid">
+        <div class="image-brid" v-for="item in gameData" :key="item">
           <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
+            <div class="author-name">{{item.authorName}}</div>
+            <div class="author-img"><img :src="item.authorImg" /></div>
           </div>
-          <a class="image-right">
-            <div class="img-title">折纸大师</div>
+          <a class="image-right" @click="goImagePage">
+            <div class="img-title">{{item.title}}</div>
             <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
+              <p>{{item.text}}</p>
             </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src1 != imgUrl" class="image-img">
+              <img :src="item.src1" />
             </a>
-          </a>
-
-        </div>
-        <div class="image-brid">
-          <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-          </div>
-          <a class="image-right">
-            <div class="img-title">折纸大师</div>
-            <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
-            </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src2 != imgUrl" class="image-img">
+              <img :src="item.src2" />
             </a>
-          </a>
-
-        </div>
-        <div class="image-brid">
-          <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-          </div>
-          <a class="image-right">
-            <div class="img-title">折纸大师</div>
-            <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
-            </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src3 != imgUrl" class="image-img">
+              <img :src="item.src3" />
             </a>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src4 != imgUrl" class="image-img">
+              <img :src="item.src4" />
+            </a>
+            <a v-if="item.src5 != imgUrl" class="image-img">
+              <img :src="item.src5" />
+            </a>
+            <a v-if="item.src6 != imgUrl" class="image-img">
+              <img :src="item.src6" />
             </a>
           </a>
         </div>
@@ -126,60 +80,37 @@
     </div>
     <div class="imageArea">
       <div class="area-title">
-        <Icon type="md-videocam" color="#1AAFFF" size="25" style="margin-right:5px" />生活专区
-        <span>更多 >>></span>
+        <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />生活专区
+        <span @click="goImageListByArea('生活')">更多 >>></span>
       </div>
       <div class="imageArea-content">
-        <div class="image-brid">
+        <div class="image-brid" v-for="item in lifeData" :key="item">
           <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
+            <div class="author-name">{{item.authorName}}</div>
+            <div class="author-img"><img :src="item.authorImg" /></div>
           </div>
-          <a class="image-right">
-            <div class="img-title">折纸大师</div>
+          <a class="image-right" @click="goImagePage">
+            <div class="img-title">{{item.title}}</div>
             <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
+              <p>{{item.text}}</p>
             </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src1 != imgUrl" class="image-img">
+              <img :src="item.src1" />
             </a>
-          </a>
-
-        </div>
-        <div class="image-brid">
-          <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-          </div>
-          <a class="image-right">
-            <div class="img-title">折纸大师</div>
-            <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
-            </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src2 != imgUrl" class="image-img">
+              <img :src="item.src2" />
             </a>
-          </a>
-
-        </div>
-        <div class="image-brid">
-          <div class="author">
-            <div class="author-name">海盗波波</div>
-            <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-          </div>
-          <a class="image-right">
-            <div class="img-title">折纸大师</div>
-            <div class="img-text">
-              <p>四月十日，春假在昨天结束，今天早上就是所谓的返校日。被可爱的妹妹吵醒后，五河士道原本以为今天也会如同往常般度过平凡的一天。然而伴随着一阵突如其来的冲击波，街道就这样消失得无影无踪。在宛如陨石撞击而变成环形山的街道一隅，一名身穿盔甲手持大剑的神秘少女正站在坑洞的正中央。
-                “你也是来杀我的吧？”</p>
-            </div>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src3 != imgUrl" class="image-img">
+              <img :src="item.src3" />
             </a>
-            <a class="image-img">
-              <img src="../assets/image/homePage/鸢一折纸.png" />
+            <a v-if="item.src4 != imgUrl" class="image-img">
+              <img :src="item.src4" />
+            </a>
+            <a v-if="item.src5 != imgUrl" class="image-img">
+              <img :src="item.src5" />
+            </a>
+            <a v-if="item.src6 != imgUrl" class="image-img">
+              <img :src="item.src6" />
             </a>
           </a>
         </div>
@@ -196,12 +127,14 @@ import axios from 'axios'
 export default {
   name: 'imageList',
   created () {
-    // this.loadData()
+    this.loadData()
   },
   data () {
     return {
-      pageData: [],
-      url: 'http://119.23.46.237:8080/imageWebSite/image/homePage/'
+      animeData: [],
+      gameData: [],
+      lifeData: [],
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/'
     }
   },
   components: {
@@ -209,18 +142,46 @@ export default {
     ReturnTop
   },
   methods: {
-    goImagePage() {
+    goImagePage () {
       this.$router.push('/ImagePage')
     },
+    goImageListByArea (area) {
+      this.$router.push({path: '/ImageListByArea', query: {area: area}})
+    },
     loadData () {
-      axios.get('http://119.23.46.237:8080/mServer/GetHomePage').then(res => {
-        if (res.data.code === 'ok') {
-          this.pageData = res.data.items
-          // this.pageData.name = this.url + this.pageData.name
-          this.pageData.forEach(item => {
-            item.name = this.url + item.name
+      axios.get('http://119.23.46.237:3000/getImageList').then(res => {
+        if (res.data.code === 0) {
+          this.animeData = res.data.data.anime
+          this.gameData = res.data.data.game
+          this.lifeData = res.data.data.life
+          this.animeData.forEach(item => {
+            item.src1 = this.imgUrl + item.src1
+            item.src2 = this.imgUrl + item.src2
+            item.src3 = this.imgUrl + item.src3
+            item.src4 = this.imgUrl + item.src4
+            item.src5 = this.imgUrl + item.src5
+            item.src6 = this.imgUrl + item.src6
+            item.authorImg = this.imgUrl + item.authorImg
           })
-          console.log(this.pageData)
+          this.gameData.forEach(item => {
+            item.src1 = this.imgUrl + item.src1
+            item.src2 = this.imgUrl + item.src2
+            item.src3 = this.imgUrl + item.src3
+            item.src4 = this.imgUrl + item.src4
+            item.src5 = this.imgUrl + item.src5
+            item.src6 = this.imgUrl + item.src6
+            item.authorImg = this.imgUrl + item.authorImg
+          })
+          this.lifeData.forEach(item => {
+            item.src1 = this.imgUrl + item.src1
+            item.src2 = this.imgUrl + item.src2
+            item.src3 = this.imgUrl + item.src3
+            item.src4 = this.imgUrl + item.src4
+            item.src5 = this.imgUrl + item.src5
+            item.src6 = this.imgUrl + item.src6
+            item.authorImg = this.imgUrl + item.authorImg
+          })
+          console.log(this.animeData)
         }
       })
     }

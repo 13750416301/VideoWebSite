@@ -5,7 +5,7 @@
     <div class="videoArea">
       <div class="area-title">
         <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />动漫专区
-        <span>更多 >>></span>
+        <span @click="goVideoListByArea('动漫')">更多 >>></span>
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in animeData" :key="item">
@@ -20,7 +20,7 @@
     <div class="videoArea">
       <div class="area-title">
         <Icon type="ios-game-controller-b-outline" color="#1AAFFF" size="25" style="margin-right:5px" />游戏专区
-        <span>更多 >>></span>
+        <span @click="goVideoListByArea('游戏')">更多 >>></span>
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in gameData" :key="item">
@@ -35,7 +35,7 @@
     <div class="videoArea">
       <div class="area-title">
         <Icon type="md-videocam" color="#1AAFFF" size="25" style="margin-right:5px" />生活专区
-        <span>更多 >>></span>
+        <span @click="goVideoListByArea('生活')">更多 >>></span>
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in lifeData" :key="item">
@@ -65,7 +65,7 @@ export default {
       animeData: [],
       gameData: [],
       lifeData: [],
-      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/'
     }
   },
   components: {
@@ -92,6 +92,9 @@ export default {
           })
         }
       })
+    },
+    goVideoListByArea (area) {
+      this.$router.push({path: '/VideoListByArea', query: {area: area}})
     }
   }
 }

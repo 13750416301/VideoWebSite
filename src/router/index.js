@@ -4,10 +4,13 @@ import HomePage from '@/components/homePage'
 import login from '@/components/login'
 import videoPage from '@/components/videoPage'
 import videoList from '@/components/videoList'
+import videoListByArea from '@/components/videoListByArea'
 import imageList from '@/components/imageList'
+import imageListByArea from '@/components/imageListByArea'
 import imagePage from '@/components/imagePage'
 import videoTest from '@/components/videoTest'
 import articleList from '@/components/articleList'
+import articleListByArea from '@/components/articleListByArea'
 import space from '@/components/space'
 
 Vue.use(Router)
@@ -35,9 +38,19 @@ export default new Router({
       component: videoList
     },
     {
+      path: '/VideoListByArea',
+      name: 'VideoListByArea',
+      component: videoListByArea
+    },
+    {
       path: '/ImageList',
       name: 'ImageList',
       component: imageList
+    },
+    {
+      path: '/ImageListByArea',
+      name: 'ImageListByArea',
+      component: imageListByArea
     },
     {
       path: '/ImagePage',
@@ -53,6 +66,11 @@ export default new Router({
       path: '/ArticleList',
       name: 'ArticleList',
       component: articleList
+    },
+    {
+      path: '/ArticleListByArea',
+      name: 'ArticleListByArea',
+      component: articleListByArea
     },
     {
       path: '/Space',
