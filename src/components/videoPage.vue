@@ -41,7 +41,7 @@
         </div>
 
         <div class="video-bullet">
-          <Input search enter-button placeholder="请输入弹幕..." v-model="msg" @on-search="addToList" />
+          <Input search enter-button="发送" placeholder="请输入弹幕..." v-model="msg" @on-search="addToList" />
         </div>
       </div>
       <div class="content-right">
@@ -54,69 +54,17 @@
       </div>
       <div class="popular-comment">
         <Icon type="ios-flame" size="20" />热门评论</div>
-      <div class="comment-content">
+      <div class="comment-content" v-for="item in commentData" :key="item.id">
         <div class="author">
-          <div class="author-img"><img src="../assets/bobo.jpg" /></div>
+          <div class="author-img"><img :src="item.authorImg" /></div>
         </div>
         <div class="comment">
           <div class="comment-info">
-            <div class="author-name">海盗波波</div>
+            <div class="author-name">{{item.authorName}}</div>
             <div class="comment-text">
-              <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达。
-                党的十八大以来，中央高度重视培育和践行社会主义核心价值观。习近平总书记多次作出重要论述、提出明确要求。中央政治局围绕培育和弘扬社会主义核心价值观、弘扬中华传统美德进行集体学习。中办下发《关于培育和践行社会主义核心价值观的意见》。党中央的高度重视和有力部署，为加强社会主义核心价值观教育实践指明了努力方向，提供了重要遵循。</p>
+              <p>{{item.msg}}</p>
             </div>
-            <span class="time">2019年8月19日09:27:57</span>
-            <Icon type="ios-thumbs-up-outline" style="margin-left:10px;" />
-            <Icon type="ios-thumbs-down-outline" style="margin-left:10px;" />
-          </div>
-        </div>
-      </div>
-      <div class="comment-content">
-        <div class="author">
-          <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-        </div>
-        <div class="comment">
-          <div class="comment-info">
-            <div class="author-name">海盗波波</div>
-            <div class="comment-text">
-              <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达。
-                党的十八大以来，中央高度重视培育和践行社会主义核心价值观。习近平总书记多次作出重要论述、提出明确要求。中央政治局围绕培育和弘扬社会主义核心价值观、弘扬中华传统美德进行集体学习。中办下发《关于培育和践行社会主义核心价值观的意见》。党中央的高度重视和有力部署，为加强社会主义核心价值观教育实践指明了努力方向，提供了重要遵循。</p>
-            </div>
-            <span class="time">2019年8月19日09:27:57</span>
-            <Icon type="ios-thumbs-up-outline" style="margin-left:10px;" />
-            <Icon type="ios-thumbs-down-outline" style="margin-left:10px;" />
-          </div>
-        </div>
-      </div>
-      <div class="comment-content">
-        <div class="author">
-          <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-        </div>
-        <div class="comment">
-          <div class="comment-info">
-            <div class="author-name">海盗波波</div>
-            <div class="comment-text">
-              <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达。
-                党的十八大以来，中央高度重视培育和践行社会主义核心价值观。习近平总书记多次作出重要论述、提出明确要求。中央政治局围绕培育和弘扬社会主义核心价值观、弘扬中华传统美德进行集体学习。中办下发《关于培育和践行社会主义核心价值观的意见》。党中央的高度重视和有力部署，为加强社会主义核心价值观教育实践指明了努力方向，提供了重要遵循。</p>
-            </div>
-            <span class="time">2019年8月19日09:27:57</span>
-            <Icon type="ios-thumbs-up-outline" style="margin-left:10px;" />
-            <Icon type="ios-thumbs-down-outline" style="margin-left:10px;" />
-          </div>
-        </div>
-      </div>
-      <div class="comment-content">
-        <div class="author">
-          <div class="author-img"><img src="../assets/bobo.jpg" /></div>
-        </div>
-        <div class="comment">
-          <div class="comment-info">
-            <div class="author-name">海盗波波</div>
-            <div class="comment-text">
-              <p>社会主义核心价值观是社会主义核心价值体系的内核，体现社会主义核心价值体系的根本性质和基本特征，反映社会主义核心价值体系的丰富内涵和实践要求，是社会主义核心价值体系的高度凝练和集中表达。
-                党的十八大以来，中央高度重视培育和践行社会主义核心价值观。习近平总书记多次作出重要论述、提出明确要求。中央政治局围绕培育和弘扬社会主义核心价值观、弘扬中华传统美德进行集体学习。中办下发《关于培育和践行社会主义核心价值观的意见》。党中央的高度重视和有力部署，为加强社会主义核心价值观教育实践指明了努力方向，提供了重要遵循。</p>
-            </div>
-            <span class="time">2019年8月19日09:27:57</span>
+            <span class="time">{{item.time}}</span>
             <Icon type="ios-thumbs-up-outline" style="margin-left:10px;" />
             <Icon type="ios-thumbs-down-outline" style="margin-left:10px;" />
           </div>
@@ -137,6 +85,8 @@ export default {
   created () {
     this.id = this.$route.query.id
     this.loadData()
+    this.loadbarrageData()
+    this.loadCommentData()
   },
   data () {
     return {
@@ -148,7 +98,9 @@ export default {
       imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
       videoUrl: 'http://119.23.46.237:8080/videoWebSite/video/',
       id: null,
-      data: {}
+      data: {},
+      barrageData: [],
+      commentData: []
     }
   },
   components: {
@@ -170,18 +122,37 @@ export default {
       axios.get('http://119.23.46.237:3000/getVideoById?id=' + this.id).then(res => {
         if (res.data.code === 0) {
           this.data = res.data.data
-          // this.data.forEach(item => {
-          //   item.authorImg = this.imgUrl + item.authorImg
-          //   item.img = this.imgUrl + item.img
-          //   item.src1 = this.videoUrl + item.src1
-          //   item.src2 = this.videoUrl + item.src2
-          //   item.src3 = this.videoUrl + item.src3
-          // });
           this.data.authorImg = this.imgUrl + this.data.authorImg
           this.data.img = this.imgUrl + this.data.img
           this.data.src1 = this.videoUrl + this.data.src1
           this.data.src2 = this.videoUrl + this.data.src2
           this.data.src3 = this.videoUrl + this.data.src3
+        }
+      })
+    },
+    loadbarrageData () {
+      axios.get('http://119.23.46.237:3000/getBarrageByVideoId?videoId=' + this.id).then(res => {
+        if (res.data.code === 0) {
+          this.barrageData = res.data.data
+          this.barrageData.forEach(item => {
+            this.barrageList.push({
+              id: ++this.currentId,
+              avatar: this.imgUrl + item.authorImg,
+              msg: item.msg,
+              time: 7,
+              type: MESSAGE_TYPE.NORMAL
+            })
+          })
+        }
+      })
+    },
+    loadCommentData () {
+      axios.get('http://119.23.46.237:3000/getCommentByVideoId?videoId=' + this.id).then(res => {
+        if (res.data.code === 0) {
+          this.commentData = res.data.data
+          this.commentData.forEach(item => {
+            item.authorImg = this.imgUrl + item.authorImg
+          })
         }
       })
     }
@@ -333,6 +304,6 @@ export default {
 }
 
 .comment-text {
-  padding-top: 10px;
+  padding: 10px 0;
 }
 </style>

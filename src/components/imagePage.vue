@@ -4,8 +4,8 @@
     <Navbar></Navbar>
     <div class="imageArea">
       <div class="author">
-        <div class="author-name">{{data.author}}</div>
-        <div class="author-img"><img src="../assets/bobo.jpg" /></div>
+        <div class="author-name">{{data.authorName}}</div>
+        <div class="author-img"><img :src="data.authorImg" /></div>
       </div>
       <div class="image-right">
         <div class="img-title">{{data.title}}</div>
