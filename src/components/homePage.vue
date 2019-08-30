@@ -60,7 +60,7 @@
             <div class="content">
               <div class="author-name"><span>{{item.authorName}}</span>的文章</div>
               <div class="article">
-                <div class="article-title">{{item.title}}</div>
+                <div class="article-title" @click="goArticlePage(item.id)">{{item.title}}</div>
                 <div class="article-content">
                   <p>{{item.content}}</p>
                   <div class="article-img">
@@ -167,6 +167,7 @@ export default {
             item.img = this.imgUrl + item.img
             item.authorImg = this.imgUrl + item.authorImg
             item.content = item.content.slice(0, 150) + '...'
+            item.content = item.content.split('<br>').join('')
           })
         }
       })
@@ -185,6 +186,9 @@ export default {
     },
     goImagePage (id) {
       this.$router.push({path: '/ImagePage', query: {id: id}})
+    },
+    goArticlePage (id) {
+      this.$router.push({path: '/ArticlePage', query: {id: id}})
     }
   }
 }

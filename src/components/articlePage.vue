@@ -13,7 +13,8 @@
           <img :src="data.img" />
         </div>
         <div class="article-content">
-          <p>{{data.content}}</p>
+          <!-- <p>{{data.content}}</p> -->
+          <p v-for="i in section" :key="i">{{i}}</p>
         </div>
       </div>
     </div>
@@ -34,7 +35,8 @@ export default {
   data () {
     return {
       data: {},
-      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/'
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
+      section: []
     }
   },
   components: {
@@ -48,6 +50,7 @@ export default {
           this.data = res.data.data
           this.data.img = this.imgUrl + this.data.img
           this.data.authorImg = this.imgUrl + this.data.authorImg
+          this.section = this.data.content.split('<br>')
           console.log(this.data)
         }
       })
@@ -134,7 +137,7 @@ export default {
   margin-top: 20px;
   font-size: 20px;
   line-height: 60px;
-  width: 300px;
+  width: 600px;
   margin: 0 auto;
   font-weight: bold;
   text-align: center;
