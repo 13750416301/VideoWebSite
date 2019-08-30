@@ -1,34 +1,19 @@
 <template>
   <!-- 首页 -->
-  <div class="imagePage">
+  <div class="articlePage">
     <Navbar></Navbar>
-    <div class="imageArea">
+    <div class="articleArea">
       <div class="author">
-        <div class="author-name">{{data.author}}</div>
-        <div class="author-img"><img src="../assets/bobo.jpg" /></div>
+        <div class="author-name">{{data.authorName}}</div>
+        <div class="author-img"><img :src="data.authorImg" /></div>
       </div>
-      <div class="image-right">
-        <div class="img-title">{{data.title}}</div>
-        <div class="img-text">
-          <p>{{data.text}}</p>
+      <div class="content-right">
+        <div class="article-title">{{data.title}}</div>
+        <div class="image-img">
+          <img :src="data.img" />
         </div>
-        <div v-if="data.src1 != imgUrl" class="image-img">
-          <img :src="data.src1" />
-        </div>
-        <div v-if="data.src2 != imgUrl" class="image-img">
-          <img :src="data.src2" />
-        </div>
-        <div v-if="data.src3 != imgUrl" class="image-img">
-          <img :src="data.src3" />
-        </div>
-        <div v-if="data.src4 != imgUrl" class="image-img">
-          <img :src="data.src4" />
-        </div>
-        <div v-if="data.src5 != imgUrl" class="image-img">
-          <img :src="data.src5" />
-        </div>
-        <div v-if="data.src6 != imgUrl" class="image-img">
-          <img :src="data.src6" />
+        <div class="article-content">
+          <p>{{data.content}}</p>
         </div>
       </div>
     </div>
@@ -41,7 +26,7 @@ import Navbar from '@/components/navbar'
 import ReturnTop from '@/components/returnTop'
 import axios from 'axios'
 export default {
-  name: 'imagePage',
+  name: 'articlePage',
   created () {
     this.id = this.$route.query.id
     this.loadData()
@@ -58,15 +43,10 @@ export default {
   },
   methods: {
     loadData () {
-      axios.get('http://119.23.46.237:3000/getImageById?id=' + this.id).then(res => {
+      axios.get('http://119.23.46.237:3000/getArticleById?id=' + this.id).then(res => {
         if (res.data.code === 0) {
           this.data = res.data.data
-          this.data.src1 = this.imgUrl + this.data.src1
-          this.data.src2 = this.imgUrl + this.data.src2
-          this.data.src3 = this.imgUrl + this.data.src3
-          this.data.src4 = this.imgUrl + this.data.src4
-          this.data.src5 = this.imgUrl + this.data.src5
-          this.data.src6 = this.imgUrl + this.data.src6
+          this.data.img = this.imgUrl + this.data.img
           this.data.authorImg = this.imgUrl + this.data.authorImg
           console.log(this.data)
         }
@@ -78,7 +58,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.imagePage {
+.articlePage {
   margin: 0;
   padding: 0;
   left: 0;
@@ -88,7 +68,7 @@ export default {
   background-color: #efefef;
 }
 
-.imageArea {
+.articleArea {
   margin: 10px auto;
   width: 1080px;
   min-height: 1080px;
@@ -123,14 +103,14 @@ export default {
   text-align: center;
   width: 70px;
 }
-.image-right {
+.content-right {
   width: 100%;
   padding-right: 100px;
 }
 
 .image-img {
   /* width: 95%; */
-  width: 500px;
+  width: 700px;
   height: auto;
   /* height: 80%; */
   display: flex;
@@ -140,8 +120,9 @@ export default {
   border: 4px solid rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   position: relative;
-  margin-left: 150px;
-  margin-top: 20px;
+  /* margin-left: 150px; */
+  /* margin-top: 20px; */
+  margin: 20px auto;
 }
 .image-img img {
   width: 100%;
@@ -149,19 +130,21 @@ export default {
   margin: auto auto;
 }
 
-.img-title {
-  font-size: 15px;
+.article-title {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 60px;
   width: 300px;
   margin: 0 auto;
   font-weight: bold;
   text-align: center;
 }
 
-.img-text p {
+.article-content p {
   font-size: 14px;
   text-indent: 2em;
   line-height: 28px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.2); */
 }
 </style>

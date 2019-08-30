@@ -9,11 +9,11 @@
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in animeData" :key="item">
-          <a class="video-img">
+          <a class="video-img" @click="goVideoPage(item.id)">
             <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
-          <div class="v-title">折纸大师</div>
+          <div class="v-title">{{ item.title }}</div>
         </div>
       </div>
     </div>
@@ -24,11 +24,11 @@
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in gameData" :key="item">
-          <a class="video-img">
+          <a class="video-img" @click="goVideoPage(item.id)">
             <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
-          <div class="v-title">折纸大师</div>
+          <div class="v-title">{{ item.title }}</div>
         </div>
       </div>
     </div>
@@ -39,11 +39,11 @@
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in lifeData" :key="item">
-          <a class="video-img">
+          <a class="video-img" @click="goVideoPage(item.id)">
             <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
-          <div class="v-title">折纸大师</div>
+          <div class="v-title">{{ item.title }}</div>
         </div>
       </div>
     </div>
@@ -95,6 +95,9 @@ export default {
     },
     goVideoListByArea (area) {
       this.$router.push({path: '/VideoListByArea', query: {area: area}})
+    },
+    goVideoPage (id) {
+      this.$router.push({path: '/VideoPage', query: {id: id}})
     }
   }
 }

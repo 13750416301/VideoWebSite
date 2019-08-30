@@ -13,7 +13,7 @@
             <div class="author-name">{{item.authorName}}</div>
             <div class="author-img"><img :src="item.authorImg" /></div>
           </div>
-          <a class="image-right" @click="goImagePage">
+          <a class="image-right" @click="goImagePage(item.id)">
             <div class="img-title">{{item.title}}</div>
             <div class="img-text">
               <p>{{item.text}}</p>
@@ -51,7 +51,7 @@
             <div class="author-name">{{item.authorName}}</div>
             <div class="author-img"><img :src="item.authorImg" /></div>
           </div>
-          <a class="image-right" @click="goImagePage">
+          <a class="image-right" @click="goImagePage(item.id)">
             <div class="img-title">{{item.title}}</div>
             <div class="img-text">
               <p>{{item.text}}</p>
@@ -89,7 +89,7 @@
             <div class="author-name">{{item.authorName}}</div>
             <div class="author-img"><img :src="item.authorImg" /></div>
           </div>
-          <a class="image-right" @click="goImagePage">
+          <a class="image-right" @click="goImagePage(item.id)">
             <div class="img-title">{{item.title}}</div>
             <div class="img-text">
               <p>{{item.text}}</p>
@@ -142,8 +142,8 @@ export default {
     ReturnTop
   },
   methods: {
-    goImagePage () {
-      this.$router.push('/ImagePage')
+    goImagePage (id) {
+      this.$router.push({path: '/ImagePage', query: {id: id}})
     },
     goImageListByArea (area) {
       this.$router.push({path: '/ImageListByArea', query: {area: area}})

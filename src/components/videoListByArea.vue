@@ -8,7 +8,7 @@
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in data" :key="item">
-          <a class="video-img">
+          <a class="video-img" @click="goVideoPage(item.id)">
             <img :src="item.img" />
             <VideoHover></VideoHover>
           </a>
@@ -53,6 +53,9 @@ export default {
           })
         }
       })
+    },
+    goVideoPage (id) {
+      this.$router.push({path: '/VideoPage', query: {id: id}})
     }
   }
 }

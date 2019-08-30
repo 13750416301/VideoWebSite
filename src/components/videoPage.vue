@@ -30,7 +30,7 @@
         <div class="video-content">
           <vue-plyr class="video">
             <video poster="poster.png" :src="data.src1">
-              <!-- <source :src="data.src3" type="video/mp4" size="480"> -->
+              <source :src="data.src3" type="video/mp4" size="480">
               <source :src="data.src2" type="video/mp4" size="720">
               <source :src="data.src1" type="video/mp4" size="1080">
               <track kind="captions" label="English" srclang="en" src="captions-en.vtt" default>
@@ -131,7 +131,7 @@
 import Navbar from '@/components/navbar'
 import ReturnTop from '@/components/returnTop'
 import {MESSAGE_TYPE} from 'vue-baberrage'
-import axios from 'axios';
+import axios from 'axios'
 export default {
   name: 'videoPage',
   created () {
@@ -148,7 +148,7 @@ export default {
       imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
       videoUrl: 'http://119.23.46.237:8080/videoWebSite/video/',
       id: null,
-      data: {},
+      data: {}
     }
   },
   components: {
@@ -160,15 +160,15 @@ export default {
       this.barrageList.push({
         id: ++this.currentId,
         // avatar: 'http://119.23.46.237:8080/videoWebSite/image/微信图片_20190826172039.jpg',
-        avatar: item.authorImg,
+        avatar: this.data.authorImg,
         msg: this.msg,
         time: 7,
         type: MESSAGE_TYPE.NORMAL
       })
     },
-    loadData() {
+    loadData () {
       axios.get('http://119.23.46.237:3000/getVideoById?id=' + this.id).then(res => {
-        if(res.data.code === 0) {
+        if (res.data.code === 0) {
           this.data = res.data.data
           // this.data.forEach(item => {
           //   item.authorImg = this.imgUrl + item.authorImg

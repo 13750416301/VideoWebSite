@@ -12,6 +12,7 @@ import videoTest from '@/components/videoTest'
 import articleList from '@/components/articleList'
 import articleListByArea from '@/components/articleListByArea'
 import space from '@/components/space'
+import articlePage from '@/components/articlePage'
 
 Vue.use(Router)
 
@@ -71,6 +72,11 @@ export default new Router({
       path: '/ArticleListByArea',
       name: 'ArticleListByArea',
       component: articleListByArea
+    },
+    {
+      path: '/ArticlePage',
+      name: 'ArticlePage',
+      component: articlePage
     },
     {
       path: '/Space',

@@ -39,7 +39,7 @@
       </div>
       <div class="videoArea-content">
         <div class="video-brid" v-for="item in imageData" :key="item">
-          <a class="video-img">
+          <a class="video-img" @click="goImagePage(item.id)">
             <img :src="item.src1" />
           </a>
           <div class="img-title">{{ item.title }}</div>
@@ -182,6 +182,9 @@ export default {
     },
     goArticleList () {
       this.$router.push('/ArticleList')
+    },
+    goImagePage (id) {
+      this.$router.push({path: '/ImagePage', query: {id: id}})
     }
   }
 }
