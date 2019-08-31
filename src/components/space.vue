@@ -7,9 +7,9 @@
         <div class="title-text"><Icon type="ios-contact" size="40" style="margin-right:5px" />个人空间</div>
         <div class="author">
           <div class="author-img">
-            <img src="../assets/bobo.jpg" />
+            <img :src="userData.authorImg" />
           </div>
-          <div class="author-name">海盗波波</div>
+          <div class="author-name">{{userData.authorName}}</div>
         </div>
       </div>
       <Tabs class="tab" type="card">
@@ -21,7 +21,7 @@
                 </div>
               <div class="videoArea-content">
                 <div class="video-brid" v-for="item in videoData" :key="item">
-                  <a class="video-img" @click="goVideoPage">
+                  <a class="video-img" @click="goVideoPage(item.id)">
                     <img :src="item.img" />
                     <VideoHover></VideoHover>
                   </a>
@@ -48,7 +48,7 @@
               </div>
               <div class="videoArea-content">
                 <div class="video-brid" v-for="item in imageData" :key="item">
-                  <a class="video-img">
+                  <a class="video-img" @click="goImagePage(item.id)">
                     <img :src="item.src1" />
                   </a>
                   <div class="img-title">{{ item.title }}</div>
@@ -80,10 +80,12 @@
                   <div class="content1">
                     <div class="author-name"><span>{{item.authorName}}</span>的文章</div>
                     <div class="article">
-                      <div class="article-title">{{item.title}}</div>
+                      <div class="article-title" @click="goArticlePage(item.id)">{{item.title}}</div>
                       <div class="article-content">
                         <p>{{item.content}}</p>
-                        <img :src="item.img">
+                        <div class="article-img">
+                          <img :src="item.img">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -206,7 +208,8 @@ import axios from 'axios'
 export default {
   name: 'homePage',
   created () {
-    this.loadData()
+    this.getUser()
+    // this.loadData()
   },
   data () {
     return {
@@ -216,7 +219,9 @@ export default {
       videoData: [],
       imageData: [],
       articleData: [],
-      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/'
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
+      isLogin: false,
+      userData: null
     }
   },
   components: {
@@ -226,20 +231,33 @@ export default {
   },
   methods: {
     loadData () {
-      axios.get('http://119.23.46.237:3000/getHomePage').then(res => {
+      // this.getUser()
+      axios.get('http://119.23.46.237:3000/getVideoListByName?name=' + this.userData.authorName).then(res => {
         if (res.data.code === 0) {
           console.log(res.data.data)
-          this.videoData = res.data.data.video
-          this.imageData = res.data.data.images
-          this.articleData = res.data.data.article
+          this.videoData = res.data.data
+          // this.imageData = res.data.data.images
+          // this.articleData = res.data.data.article
           this.videoData.forEach(item => {
             item.img = this.imgUrl + item.img
             item.authorImg = this.imgUrl + item.authorImg
           })
+        }
+      }),
+      axios.get('http://119.23.46.237:3000/getImageListByName?name=' + this.userData.authorName).then(res => {
+        if (res.data.code === 0) {
+          console.log(res.data.data)
+          this.imageData = res.data.data
           this.imageData.forEach(item => {
             item.src1 = this.imgUrl + item.src1
             item.authorImg = this.imgUrl + item.authorImg
           })
+        }
+      }),
+      axios.get('http://119.23.46.237:3000/getArticleListByName?name=' + this.userData.authorName).then(res => {
+        if (res.data.code === 0) {
+          console.log(res.data.data)
+          this.articleData = res.data.data
           this.articleData.forEach(item => {
             item.img = this.imgUrl + item.img
             item.authorImg = this.imgUrl + item.authorImg
@@ -247,8 +265,28 @@ export default {
         }
       })
     },
-    goVideoPage () {
-      this.$router.push('/VideoPage')
+    getUser() {
+      axios.get('http://119.23.46.237:3000/getUser').then(res => {
+        if(res.data.code === 0 && res.data.data) {
+          for(let i in res.data.data) {
+            this.isLogin = true
+          }
+          // this.isLogin = true
+          this.userData = res.data.data
+          this.userData.authorImg = this.imgUrl + this.userData.authorImg
+          console.log(this.userData)
+          this.loadData()
+        }
+      })
+    },
+    goVideoPage (id) {
+      this.$router.push({path: '/VideoPage', query: {id: id}})
+    },
+    goImagePage (id) {
+      this.$router.push({path: '/ImagePage', query: {id: id}})
+    },
+    goArticlePage (id) {
+      this.$router.push({path: '/ArticlePage', query: {id: id}})
     }
   }
 }
@@ -404,6 +442,7 @@ export default {
 
 .articleArea-brid .content1 {
   margin-left: 0;
+  width: 100%;
 }
 
 .articleArea-brid .author-img {
@@ -426,6 +465,43 @@ export default {
 .articleArea-brid .author-name span {
   font-weight: bold;
   margin-right: 5px;
+}
+
+.article {
+  background-color: #f9f9f9;
+  margin-right: 10px;
+  padding: 10px 10px;
+}
+
+.article-title {
+  font-size: 15px;
+  line-height: 30px;
+  color: #1aafff;
+  cursor: pointer;
+}
+
+.article-title:hover {
+  text-decoration: underline;
+}
+
+.article-content {
+  width: 100%;
+  line-height: 24px;
+  display: flex;
+}
+
+.article-content p {
+  width: 80%;
+}
+
+.article-content .article-img {
+  margin-left: 20px;
+  /* width: 100px; */
+  width: 20%;
+}
+
+.article-content .article-img img {
+  width: 100%;
 }
 
 .upload-video {

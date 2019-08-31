@@ -1,28 +1,39 @@
 <template>
   <div class="login">
     <div class="loginForm">
-      <form>
+      <form action="http://119.23.46.237:3000/login" method="post">
         账号:
-        <input type="text" name="firstname"><br>
+        <input type="text" name="username" v-model="username"><br>
         密码:
-        <input type="password" name="lastname" style="letter-spacing: 5px;"><br>
-        <Button @click="comfirmLogin" size="large" style="width: 100px;" ghost>登陆</Button>
+        <input type="password" name="password" v-model="password" style="letter-spacing: 5px;"><br>
+        <Button type="submit" @click="login" size="large" style="width: 100px;" ghost>登陆</Button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
+      username: null,
+      password: null
     }
   },
   components: {
   },
   methods: {
     comfirmLogin () {
-      this.$router.push('/')
+    },
+    login() {
+      axios.post('http://119.23.46.237:3000/login', {
+        username: this.username,
+        password: this.password
+      }).then(res => {
+        console.log('haha')
+        this.$router.push('/')
+      })
     }
   }
 }

@@ -15,18 +15,6 @@
             <div class="author-name">{{data.authorName}}</div>
           </div>
         </div>
-        <!-- <div class="video-content">
-          <vue-plyr class="video">
-            <video poster="poster.png" src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4">
-              <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="480">
-              <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="720">
-              <source src="http://119.23.46.237:8080/web/%E5%A8%81%E9%A3%8E%E5%A0%82%E5%A0%82.mp4" type="video/mp4" size="1080">
-              <track kind="captions" label="English" srclang="en" src="captions-en.vtt" default>
-            </video>
-            <vue-baberrage class="baberrage" :isShow="barrageIsShow" :barrageList="barrageList" :loop="barrageLoop">
-            </vue-baberrage>
-          </vue-plyr>
-        </div> -->
         <div class="video-content">
           <vue-plyr class="video">
             <video poster="poster.png" :src="data.src1">
@@ -83,6 +71,7 @@ import axios from 'axios'
 export default {
   name: 'videoPage',
   created () {
+    this.getUser()
     this.id = this.$route.query.id
     this.loadData()
     this.loadbarrageData()
@@ -100,7 +89,8 @@ export default {
       id: null,
       data: {},
       barrageData: [],
-      commentData: []
+      commentData: [],
+      userData: null
     }
   },
   components: {
@@ -112,10 +102,24 @@ export default {
       this.barrageList.push({
         id: ++this.currentId,
         // avatar: 'http://119.23.46.237:8080/videoWebSite/image/微信图片_20190826172039.jpg',
-        avatar: this.data.authorImg,
+        avatar: this.userData.authorImg,
         msg: this.msg,
         time: 7,
         type: MESSAGE_TYPE.NORMAL
+      })
+    },
+    getUser() {
+      axios.get('http://119.23.46.237:3000/getUser').then(res => {
+        if(res.data.code === 0 && res.data.data) {
+          for(let i in res.data.data) {
+            this.isLogin = true
+          }
+          // this.isLogin = true
+          this.userData = res.data.data
+          this.userData.authorImg = this.imgUrl + this.userData.authorImg
+          console.log(this.userData)
+          this.loadData()
+        }
       })
     },
     loadData () {

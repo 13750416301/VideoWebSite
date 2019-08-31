@@ -15,7 +15,11 @@
       </ul>
       <ul class="login-tab">
         <li class="login-btn">
-          <a @click="goLogin">
+          <a v-if="isLogin" @click="goSpace">
+            <Icon type="ios-contact" size="30" style="margin-right:5px" />
+            {{userData.authorName}}
+          </a>
+          <a v-else @click="goLogin">
             <Icon type="ios-contact" size="30" style="margin-right:5px" />
             登陆
           </a>
@@ -26,10 +30,17 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'navbar',
+  created() {
+    this.getUser()
+  },
   data () {
     return {
+      userData: null,
+      userName: null,
+      isLogin: false
     }
   },
   methods: {
@@ -47,6 +58,21 @@ export default {
     },
     goArticleList() {
       this.$router.push('/ArticleList')
+    },
+    goSpace() {
+      this.$router.push('/Space')
+    },
+    getUser() {
+      axios.get('http://119.23.46.237:3000/getUser').then(res => {
+        if(res.data.code === 0 && res.data.data) {
+          for(let i in res.data.data) {
+            this.isLogin = true
+          }
+          // this.isLogin = true
+          this.userData = res.data.data
+          console.log(this.userData)
+        }
+      })
     }
   }
 }
@@ -89,14 +115,19 @@ export default {
 
 .login-tab {
   float: right;
+  display: block;
+  width: 300px;
 }
 
-.login-btn {
-  width: 150px;
+.login-tab .login-btn {
+  display: block;
+  width: 300px;
+  text-align: right;
 }
 
 .content ul li a {
   display: block;
+  text-align: right;
   height: 100%;
   color: #fff;
 }
