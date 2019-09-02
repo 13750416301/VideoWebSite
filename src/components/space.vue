@@ -4,7 +4,8 @@
     <Navbar></Navbar>
     <div class="content">
       <div class="title">
-        <div class="title-text"><Icon type="ios-contact" size="40" style="margin-right:5px" />个人空间</div>
+        <div class="title-text">
+          <Icon type="ios-contact" size="40" style="margin-right:5px" />个人空间</div>
         <div class="author">
           <div class="author-img">
             <img :src="userData.authorImg" />
@@ -15,10 +16,10 @@
       <Tabs class="tab" type="card">
         <TabPane label="我的视频">
           <div class="tab-content">
-              <div class="videoArea">
-                <div class="area-title">
-                  <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />个人视频
-                </div>
+            <div class="videoArea">
+              <div class="area-title">
+                <Icon type="logo-youtube" color="#1AAFFF" size="25" style="margin-right:5px" />个人视频
+              </div>
               <div class="videoArea-content">
                 <div class="video-brid" v-for="item in videoData" :key="item">
                   <a class="video-img" @click="goVideoPage(item.id)">
@@ -34,7 +35,7 @@
                 <Icon type="ios-cloud-upload-outline" />上传视频
               </div>
               <div class="upload-button" @click="videoDialog = true">
-                  <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
               </div>
             </div>
           </div>
@@ -44,7 +45,6 @@
             <div class="videoArea">
               <div class="area-title">
                 <Icon type="ios-images" color="#1AAFFF" size="25" style="margin-right:5px" />个人图片
-                <span>更多</span>
               </div>
               <div class="videoArea-content">
                 <div class="video-brid" v-for="item in imageData" :key="item">
@@ -60,11 +60,10 @@
                 <Icon type="ios-cloud-upload-outline" />上传图片
               </div>
               <div class="upload-button" @click="imageDialog = true">
-                  <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
               </div>
             </div>
           </div>
-          
         </TabPane>
         <TabPane label="我的文章">
           <div class="tab-content">
@@ -97,11 +96,11 @@
                 <Icon type="ios-cloud-upload-outline" />上传文章
               </div>
               <div class="upload-button" @click="articleDialog = true">
-                  <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
               </div>
             </div>
           </div>
-          
+
         </TabPane>
       </Tabs>
     </div>
@@ -110,12 +109,12 @@
         <Row>
           <i-col span="12">
             <FormItem label="视频标题：">
-              <Input placeholder="请输入标题" />
+              <Input placeholder="请输入标题" v-model="upVideoData.title" />
             </FormItem>
           </i-col>
           <i-col span="12">
             <FormItem label="视频分类：">
-              <Select style="width:120px;">
+              <Select style="width:120px;" v-model="upVideoData.area">
                 <Option value="动漫">动漫</Option>
                 <Option value="游戏">游戏</Option>
                 <Option value="生活">生活</Option>
@@ -124,28 +123,25 @@
           </i-col>
         </Row>
         <Row>
-          <upload class="upload-video" action="fjdsfjls">
-            <div class="upload-title" style="font-size:12px;">
-              <Icon type="ios-cloud-upload-outline" />上传视频
-            </div>
-            <div class="upload-button">
-                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
-            </div>
-          </upload>
+          <Form class="upload-video" action="http://119.23.46.237:3000/upload" method="post" enctype="multipart/form-data" target="iframeDisplay2">
+            <input class="inputForm" type="file" name="video" multiple />
+            <input class="inputForm" type="submit" style="width:50px;" value="上传" />
+          </Form>
+          <iframe id="iframeDisplay2" name="iframeDisplay2" style="display: none;"></iframe>
         </Row>
       </Form>
     </Modal>
-    <Modal title="上传图片" v-model="imageDialog" width="600">
-      <Form :label-width="80">
+    <Modal @on-ok="submitImg" title="上传图片" v-model="imageDialog" width="600">
+      <Form :label-width="80" action="http://119.23.46.237:3000/upload" method="post" enctype="multipart/form-data">
         <Row>
           <i-col span="12">
             <FormItem label="图片标题：">
-              <Input placeholder="请输入标题" />
+              <Input placeholder="请输入标题" v-model="upImageData.title" />
             </FormItem>
           </i-col>
           <i-col span="12">
             <FormItem label="图片分类：">
-              <Select style="width:120px;">
+              <Select style="width:120px;" v-model="upImageData.area">
                 <Option value="动漫">动漫</Option>
                 <Option value="游戏">游戏</Option>
                 <Option value="生活">生活</Option>
@@ -155,18 +151,24 @@
         </Row>
         <Row>
           <FormItem label="图片描述：">
-            <Input type="textarea" :rows="3" />
+            <Input type="textarea" :rows="3" v-model="upImageData.text" />
           </FormItem>
         </Row>
         <Row>
-          <upload class="upload-video" action="fjdsfjls">
+          <!-- <input type="file" name="image" multiple /> -->
+          <Form class="upload-video" action="http://119.23.46.237:3000/upload" method="post" enctype="multipart/form-data" target="iframeDisplay">
+            <input class="inputForm" type="file" name="image" multiple />
+            <input class="inputForm" type="submit" style="width:50px;" value="上传" />
+          </Form>
+          <iframe id="iframeDisplay" name="iframeDisplay" style="display: none;"></iframe>
+          <!-- <upload class="upload-video" action="http://119.23.46.237:3000/upload">
             <div class="upload-title" style="font-size:12px;">
               <Icon type="ios-cloud-upload-outline" />上传图片
             </div>
             <div class="upload-button">
-                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+              <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
             </div>
-          </upload>
+          </upload> -->
         </Row>
       </Form>
     </Modal>
@@ -190,7 +192,7 @@
               <Icon type="ios-cloud-upload-outline" />上传文章图片
             </div>
             <div class="upload-button">
-                <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
+              <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
             </div>
           </upload>
         </Row>
@@ -220,8 +222,27 @@ export default {
       imageData: [],
       articleData: [],
       imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
+      videoUrl: 'http://119.23.46.237:8080/videoWebSite/video/',
       isLogin: false,
-      userData: null
+      userData: null,
+      upImageData: {
+        title: null,
+        text: null,
+        area: null,
+        src1: null,
+        src2: null,
+        src3: null,
+        src4: null,
+        src5: null,
+        src6: null
+      },
+      upVideoData: {
+        title: null,
+        text: null,
+        area: null,
+        src: null
+      },
+      upArticleData: {}
     }
   },
   components: {
@@ -243,7 +264,7 @@ export default {
             item.authorImg = this.imgUrl + item.authorImg
           })
         }
-      }),
+      })
       axios.get('http://119.23.46.237:3000/getImageListByName?name=' + this.userData.authorName).then(res => {
         if (res.data.code === 0) {
           console.log(res.data.data)
@@ -253,7 +274,7 @@ export default {
             item.authorImg = this.imgUrl + item.authorImg
           })
         }
-      }),
+      })
       axios.get('http://119.23.46.237:3000/getArticleListByName?name=' + this.userData.authorName).then(res => {
         if (res.data.code === 0) {
           console.log(res.data.data)
@@ -265,10 +286,10 @@ export default {
         }
       })
     },
-    getUser() {
+    getUser () {
       axios.get('http://119.23.46.237:3000/getUser').then(res => {
-        if(res.data.code === 0 && res.data.data) {
-          for(let i in res.data.data) {
+        if (res.data.code === 0 && res.data.data) {
+          for (let i in res.data.data) {
             this.isLogin = true
           }
           // this.isLogin = true
@@ -277,6 +298,43 @@ export default {
           console.log(this.userData)
           this.loadData()
         }
+      })
+    },
+    submitImg () {
+      console.log('haha')
+      axios.get('http://119.23.46.237:3000/upload').then(res => {
+        this.upImageData.src1 = res.data.filename
+        console.log(this.upImageData.src1)
+        axios.post('http://119.23.46.237:3000/uploadImage', {
+          title: this.upImageData.title,
+          text: this.upImageData.text,
+          area: this.upImageData.area,
+          src1: this.upImageData.src1,
+          src2: '',
+          src3: '',
+          src4: '',
+          src5: '',
+          src6: '',
+          authorId: this.userData.authorId,
+          authorName: this.userData.authorName,
+          authorImg: this.userData.authorImg.replace(this.imgUrl, '')
+        }).then(res => {
+          if (res.data.code === 0) {
+            this.$Message.success('上传成功！')
+          }
+        })
+      })
+    },
+    submitVideo () {
+      axios.get('http://119.23.46.237:3000/upload').then(res => {
+        this.upVideoData.src = res.data.filename
+        console.log(this.upVideoData.src)
+        axios.post('http://119.23.46.237:3000/uploadVideo', {
+          title: this.upVideoData.title,
+          text: this.upVideoData.text,
+          area: this.upVideoData.area,
+          src: this.upVideoData.src
+        })
       })
     },
     goVideoPage (id) {
@@ -303,7 +361,6 @@ export default {
   width: 100%; */
   background-color: #efefef;
 }
-
 
 .content {
   margin: 10px auto;
@@ -358,7 +415,9 @@ export default {
 .videoArea {
   margin: 10px auto;
   width: 1080px;
-  height: 500px;
+  max-height: 600px;
+  overflow: auto;
+  /* height: auto; */
   background-color: #fff;
   padding: 20px 20px;
   font-size: 15px;
@@ -509,6 +568,12 @@ export default {
   padding: 10px 10px;
 }
 
+.inputForm {
+  outline-style: none;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 2px; */
+}
+
 .upload-title {
   font-size: 15px;
   color: #000;
@@ -525,5 +590,4 @@ export default {
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 }
-
 </style>
