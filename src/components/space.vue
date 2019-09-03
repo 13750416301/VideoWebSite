@@ -104,7 +104,7 @@
         </TabPane>
       </Tabs>
     </div>
-    <Modal title="上传视频" v-model="videoDialog" width="600">
+    <Modal @on-ok="submitVideo" title="上传视频" v-model="videoDialog" width="600">
       <Form :label-width="80">
         <Row>
           <i-col span="12">
@@ -123,8 +123,8 @@
           </i-col>
         </Row>
         <Row>
-          <Form class="upload-video" action="http://119.23.46.237:3000/upload" method="post" enctype="multipart/form-data" target="iframeDisplay2">
-            <input class="inputForm" type="file" name="video" multiple />
+          <Form class="upload-video" action="http://119.23.46.237:3000/uploadMp4" method="post" enctype="multipart/form-data" target="iframeDisplay2">
+            <input class="inputForm" type="file" name="image" multiple />
             <input class="inputForm" type="submit" style="width:50px;" value="上传" />
           </Form>
           <iframe id="iframeDisplay2" name="iframeDisplay2" style="display: none;"></iframe>
@@ -161,40 +161,29 @@
             <input class="inputForm" type="submit" style="width:50px;" value="上传" />
           </Form>
           <iframe id="iframeDisplay" name="iframeDisplay" style="display: none;"></iframe>
-          <!-- <upload class="upload-video" action="http://119.23.46.237:3000/upload">
-            <div class="upload-title" style="font-size:12px;">
-              <Icon type="ios-cloud-upload-outline" />上传图片
-            </div>
-            <div class="upload-button">
-              <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
-            </div>
-          </upload> -->
         </Row>
       </Form>
     </Modal>
-    <Modal title="上传文章" v-model="articleDialog" width="600">
+    <Modal @on-ok="submitArticle" title="上传文章" v-model="articleDialog" width="600">
       <Form :label-width="80">
         <Row>
           <i-col span="12">
             <FormItem label="文章标题：">
-              <Input placeholder="请输入标题" />
+              <Input placeholder="请输入标题" v-model="upArticleData.title" />
             </FormItem>
           </i-col>
         </Row>
         <Row>
           <FormItem label="文章内容：">
-            <Input type="textarea" :rows="10" />
+            <Input type="textarea" :rows="10" v-model="upArticleData.content" />
           </FormItem>
         </Row>
         <Row>
-          <upload class="upload-video" action="fjdsfjls">
-            <div class="upload-title" style="font-size:12px;">
-              <Icon type="ios-cloud-upload-outline" />上传文章图片
-            </div>
-            <div class="upload-button">
-              <Icon type="md-add" size="80" color="rgba(0, 0, 0, 0.5)" />
-            </div>
-          </upload>
+          <Form class="upload-video" action="http://119.23.46.237:3000/upload" method="post" enctype="multipart/form-data" target="iframeDisplay3">
+            <input class="inputForm" type="file" name="image" multiple />
+            <input class="inputForm" type="submit" style="width:50px;" value="上传" />
+          </Form>
+          <iframe id="iframeDisplay3" name="iframeDisplay3" style="display: none;"></iframe>
         </Row>
       </Form>
     </Modal>
@@ -242,7 +231,11 @@ export default {
         area: null,
         src: null
       },
-      upArticleData: {}
+      upArticleData: {
+        title: null,
+        content: null,
+        img: null
+      }
     }
   },
   components: {
@@ -326,16 +319,29 @@ export default {
       })
     },
     submitVideo () {
-      axios.get('http://119.23.46.237:3000/upload').then(res => {
+      axios.get('http://119.23.46.237:3000/uploadMp4').then(res => {
         this.upVideoData.src = res.data.filename
         console.log(this.upVideoData.src)
         axios.post('http://119.23.46.237:3000/uploadVideo', {
           title: this.upVideoData.title,
-          text: this.upVideoData.text,
           area: this.upVideoData.area,
-          src: this.upVideoData.src
+          src: this.upVideoData.src,
+          authorId: this.userData.authorId,
+          authorName: this.userData.authorName,
+          authorImg: this.userData.authorImg.replace(this.imgUrl, '')
+        }).then(res => {
+          if (res.data.code === 0) {
+            this.$Message.success('上传成功！')
+          }
         })
       })
+    },
+    submitArticle () {
+      // axios.get('http://119.23.46.237:3000/upload').then(res => {
+      //   this.upArticleData.img =res.data.filename
+      // axios.post('http://119.23.46.237:3000/')
+      // })
+      console.log(this.upArticleData)
     },
     goVideoPage (id) {
       this.$router.push({path: '/VideoPage', query: {id: id}})
