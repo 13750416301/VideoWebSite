@@ -139,7 +139,8 @@ export default {
       videoData: [],
       imageData: [],
       articleData: [],
-      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/'
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
+      videoUrl: 'http://119.23.46.237:8080/videoWebSite/video/'
     }
   },
   components: {
@@ -156,7 +157,7 @@ export default {
           this.imageData = res.data.data.images
           this.articleData = res.data.data.article
           this.videoData.forEach(item => {
-            item.img = this.imgUrl + item.img
+            item.img = this.videoUrl + item.img
             item.authorImg = this.imgUrl + item.authorImg
           })
           this.imageData.forEach(item => {

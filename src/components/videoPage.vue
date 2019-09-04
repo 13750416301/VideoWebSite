@@ -108,10 +108,10 @@ export default {
         type: MESSAGE_TYPE.NORMAL
       })
     },
-    getUser() {
+    getUser () {
       axios.get('http://119.23.46.237:3000/getUser').then(res => {
-        if(res.data.code === 0 && res.data.data) {
-          for(let i in res.data.data) {
+        if (res.data.code === 0 && res.data.data) {
+          for (let i in res.data.data) {
             this.isLogin = true
           }
           // this.isLogin = true

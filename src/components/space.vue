@@ -253,7 +253,7 @@ export default {
           // this.imageData = res.data.data.images
           // this.articleData = res.data.data.article
           this.videoData.forEach(item => {
-            item.img = this.imgUrl + item.img
+            item.img = this.videoUrl + item.img
             item.authorImg = this.imgUrl + item.authorImg
           })
         }
@@ -337,10 +337,21 @@ export default {
       })
     },
     submitArticle () {
-      // axios.get('http://119.23.46.237:3000/upload').then(res => {
-      //   this.upArticleData.img =res.data.filename
-      // axios.post('http://119.23.46.237:3000/')
-      // })
+      axios.get('http://119.23.46.237:3000/upload').then(res => {
+        this.upArticleData.img = res.data.filename
+        axios.post('http://119.23.46.237:3000/', {
+          title: this.upArticleData.title,
+          content: this.upArticleData.content,
+          img: this.upArticleData.img,
+          authorId: this.userData.authorId,
+          authorName: this.userData.authorName,
+          authorImg: this.userData.authorImg.replace(this.imgUrl, '')
+        }).then(res => {
+          if (res.data.code === 0) {
+            this.$Message.success('上传成功！')
+          }
+        })
+      })
       console.log(this.upArticleData)
     },
     goVideoPage (id) {

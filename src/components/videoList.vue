@@ -65,7 +65,8 @@ export default {
       animeData: [],
       gameData: [],
       lifeData: [],
-      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/'
+      imgUrl: 'http://119.23.46.237:8080/videoWebSite/image/',
+      videoUrl: 'http://119.23.46.237:8080/videoWebSite/video/'
     }
   },
   components: {
@@ -82,13 +83,13 @@ export default {
           this.gameData = res.data.data.game
           this.lifeData = res.data.data.life
           this.animeData.forEach(item => {
-            item.img = this.imgUrl + item.img
+            item.img = this.videoUrl + item.img
           })
           this.gameData.forEach(item => {
-            item.img = this.imgUrl + item.img
+            item.img = this.videoUrl + item.img
           })
           this.lifeData.forEach(item => {
-            item.img = this.imgUrl + item.img
+            item.img = this.videoUrl + item.img
           })
         }
       })
