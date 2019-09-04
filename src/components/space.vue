@@ -339,7 +339,7 @@ export default {
     submitArticle () {
       axios.get('http://119.23.46.237:3000/upload').then(res => {
         this.upArticleData.img = res.data.filename
-        axios.post('http://119.23.46.237:3000/', {
+        axios.post('http://119.23.46.237:3000/uploadArticle', {
           title: this.upArticleData.title,
           content: this.upArticleData.content,
           img: this.upArticleData.img,
